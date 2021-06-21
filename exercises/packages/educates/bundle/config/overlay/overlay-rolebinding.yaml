@@ -7,4 +7,5 @@
 #@overlay/match by=overlay.subset({"kind":"Deployment", "metadata":{"name":"eduk8s-operator"}})
 ---
 metadata:
+  #@ overlay/match missing_ok=True
   namespace: #@ data.values.namespace

@@ -8,9 +8,9 @@ command: |
   apiVersion: vendir.k14s.io/v1alpha1
   kind: Config
   directories:
-  - path: config
+  - path: config/upstream
     contents:
-    - path: upstream
+    - path: .
       git:
         url: https://github.com/eduk8s/eduk8s
         ref: 21.05.10.1

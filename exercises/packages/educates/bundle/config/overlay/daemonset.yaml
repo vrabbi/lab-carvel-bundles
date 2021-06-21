@@ -1,7 +1,10 @@
+#@ load("@ytt:data", "data")
+
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   name: educates-prepull
+  namespace: #@ data.values.namespace
 spec:
   selector:
     matchLabels:

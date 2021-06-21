@@ -1,25 +1,300 @@
 apiVersion: training.eduk8s.io/v1alpha2
 kind: Workshop
 metadata:
-  name: lab-markdown-sample
+  name: lab-package-testing
 spec:
-  title: Markdown Sample
-  description: A sample workshop using Markdown
-  vendor: eduk8s.io
-  difficulty: beginner
-  duration: 15m
-  url: https://github.com/eduk8s/lab-markdown-sample
+  title: Package Testing
+  description: Workshop exploring Carvel packages.
+  url: https://github.com/failk8s/lab-package-testing
   content:
-    #image: quay.io/eduk8s/lab-markdown-sample:master
-    files: github.com/eduk8s/lab-markdown-sample
+    files: github.com/failk8s/lab-package-testing
   session:
     namespaces:
       budget: small
+      secondary:
+      - name: $(session_namespace)-vc
+        # Role doesn't exist so will have effect of no access being
+        # granted to the namespace for the session used. Need to set
+        # something else Educates doesn't have a way of saying don't
+        # give access and needs a "custom" role indicator.
+        #   https://github.com/eduk8s/eduk8s-operator/issues/110
+        role: non-existent-role
+        budget: custom
     applications:
       terminal:
         enabled: true
         layout: split
       console:
         enabled: true
+        vendor: octant
       editor:
         enabled: true
+    objects:
+    - apiVersion: v1
+      kind: ServiceAccount
+      metadata:
+        name: vcluster
+        namespace: $(session_namespace)-vc
+    - kind: Role
+      apiVersion: rbac.authorization.k8s.io/v1
+      metadata:
+        name: vcluster
+        namespace: $(session_namespace)-vc
+      rules:
+        - apiGroups: [""]
+          resources: ["configmaps", "secrets", "services", "services/proxy", "pods", "pods/proxy", "pods/attach", "pods/portforward", "pods/exec", "pods/log", "events", "endpoints", "persistentvolumeclaims"]
+          verbs: ["*"]
+        - apiGroups: ["networking.k8s.io"]
+          resources: ["ingresses"]
+          verbs: ["*"]
+        - apiGroups: [""]
+          resources: ["namespaces"]
+          verbs: ["get", "list", "watch"]
+        - apiGroups: ["apps"]
+          resources: ["statefulsets"]
+          verbs: ["get", "list", "watch"]
+    - kind: RoleBinding
+      apiVersion: rbac.authorization.k8s.io/v1
+      metadata:
+        name: vcluster
+        namespace: $(session_namespace)-vc
+      roleRef:
+        apiGroup: rbac.authorization.k8s.io
+        kind: Role
+        name: vcluster
+      subjects:
+        - kind: ServiceAccount
+          name: vcluster
+    - kind: Role
+      apiVersion: rbac.authorization.k8s.io/v1
+      metadata:
+        name: vcluster-connect
+        namespace: $(session_namespace)-vc
+      rules:
+        - apiGroups: [""]
+          resources: ["pods"]
+          resourceNames: ["vcluster-0"]
+          verbs: ["get"]
+        - apiGroups: [""]
+          resources: ["pods/exec"]
+          resourceNames: ["vcluster-0"]
+          verbs: ["*"]
+    - kind: RoleBinding
+      apiVersion: rbac.authorization.k8s.io/v1
+      metadata:
+        name: vcluster-connect
+        namespace: $(session_namespace)-vc
+      roleRef:
+        apiGroup: rbac.authorization.k8s.io
+        kind: Role
+        name: vcluster-connect
+      subjects:
+        - kind: ServiceAccount
+          namespace: $(workshop_namespace)
+          name: $(service_account)
+    # The anyuid security policy within Educates doesn't allow binding of
+    # service ports when it should, so need to define our own security policy.
+    #    https://github.com/eduk8s/eduk8s-operator/issues/109
+    # The security policy was set to "custom" to allow taking control.
+    # - kind: RoleBinding
+    #   apiVersion: rbac.authorization.k8s.io/v1
+    #   metadata:
+    #     name: vcluster-anyuid
+    #     namespace: $(session_namespace)-vc
+    #   roleRef:
+    #     apiGroup: rbac.authorization.k8s.io
+    #     kind: ClusterRole
+    #     name: $(workshop_namespace)-anyuid
+    #   subjects:
+    #     - kind: ServiceAccount
+    #       namespace: $(session_namespace)-vc
+    #       name: vcluster
+    - apiVersion: rbac.authorization.k8s.io/v1
+      kind: RoleBinding
+      metadata:
+        name: vcluster-anyuid
+        namespace: $(session_namespace)-vc
+      roleRef:
+        apiGroup: rbac.authorization.k8s.io
+        kind: ClusterRole
+        name: $(workshop_namespace)-vcluster
+      subjects:
+      - kind: ServiceAccount
+        namespace: $(session_namespace)-vc
+        name: vcluster
+      - kind: ServiceAccount
+        namespace: $(session_namespace)-vc
+        name: default
+    # Can't define a custom resource quota due to bug in Educates operator.
+    #     https://github.com/eduk8s/eduk8s-operator/issues/108
+    # Since budget was set to "custom" to remove limit ranges, means that
+    # there is currently now cap on how much resources someone can use in
+    # the virtual cluster.
+    # - kind: ResourceQuota
+    #   apiVersion: v1
+    #   metadata:
+    #     name: compute-resources
+    #     namespace: $(session_namespace)-vc
+    #   spec:
+    #     hard:
+    #       limits.cpu: '4'
+    #       limits.memory: 4Gi
+    #     scopes:
+    #     - NotTerminating
+    # - kind: ResourceQuota
+    #   apiVersion: v1
+    #   metadata:
+    #     name: compute-resources-timebound
+    #     namespace: $(session_namespace)-vc
+    #   spec:
+    #     hard:
+    #       limits.cpu: '4'
+    #       limits.memory: 4Gi
+    #     scopes:
+    #     - Terminating
+    # - kind: ResourceQuota
+    #   apiVersion: v1
+    #   metadata:
+    #     name: object-counts
+    #     namespace: $(session_namespace)-vc
+    #   spec:
+    #     hard:
+    #       persistentvolumeclaims: '12'
+    #       replicationcontrollers: '25'
+    #       replicasets: '25'
+    #       secrets: '35'
+    #       services: '20'
+    - apiVersion: v1
+      kind: Service
+      metadata:
+        name: vcluster
+        namespace: $(session_namespace)-vc
+      spec:
+        tYpe: ClusterIP
+        ports:
+          - name: https
+            port: 443
+            targetPort: 8443
+            protocol: TCP
+        selector:
+          app: vcluster
+    - apiVersion: v1
+      kind: Service
+      metadata:
+        name: vcluster-headless
+        namespace: $(session_namespace)-vc
+      spec:
+        ports:
+          - name: https
+            port: 443
+            targetPort: 8443
+            protocol: TCP
+        clusterIP: None
+        selector:
+          app: vcluster
+    - apiVersion: apps/v1
+      kind: StatefulSet
+      metadata:
+        name: vcluster
+        namespace: $(session_namespace)-vc
+        labels:
+          app: vcluster
+      spec:
+        serviceName: vcluster-headless
+        replicas: 1
+        selector:
+          matchLabels:
+            app: vcluster
+        template:
+          metadata:
+            labels:
+              app: vcluster
+          spec:
+            terminationGracePeriodSeconds: 10
+            serviceAccountName: vcluster
+            containers:
+            - image: rancher/k3s:v1.19.5-k3s2
+              name: virtual-cluster
+              command:
+                - "/bin/k3s"
+              args:
+                - "server"
+                - "--write-kubeconfig=/k3s-config/kube-config.yaml"
+                - "--data-dir=/data"
+                - "--disable=traefik,servicelb,metrics-server,local-storage"
+                - "--disable-network-policy"
+                - "--disable-agent"
+                - "--disable-scheduler"
+                - "--disable-cloud-controller"
+                - "--flannel-backend=none"
+                - "--kube-controller-manager-arg=controllers=*,-nodeipam,-nodelifecycle,-persistentvolume-binder,-attachdetach,-persistentvolume-expander,-cloud-node-lifecycle"  
+                - "--service-cidr=10.96.0.0/12"  
+              volumeMounts:
+                - mountPath: /data
+                  name: data
+            - name: syncer
+              image: "loftsh/virtual-cluster:0.0.27"
+              args:
+                - "--service-name=vcluster"
+                - "--suffix=vc"
+                - "--owning-statefulset=vcluster"
+                - "--out-kube-config-secret=vcluster"
+                - "--tls-san=vcluster.$(session_namespace)-vc.svc.cluster.local"
+              volumeMounts:
+                - mountPath: /data
+                  name: data
+        volumeClaimTemplates:
+          - metadata:
+              name: data
+            spec:
+              accessModes: [ "ReadWriteOnce" ]
+              resources:
+                requests:
+                  storage: 5Gi
+  environment:
+    objects:
+    - apiVersion: policy/v1beta1
+      kind: PodSecurityPolicy
+      metadata:
+        name: aa-$(workshop_namespace)-vcluster
+      spec:
+        privileged: false
+        allowPrivilegeEscalation: false
+        requiredDropCapabilities:
+        - ALL
+        defaultAddCapabilities:
+        - NET_BIND_SERVICE
+        hostIPC: false
+        hostNetwork: false
+        hostPID: false
+        hostPorts: []
+        runAsUser:
+          rule: RunAsAny
+        seLinux:
+          rule: RunAsAny
+        fsGroup:
+          ranges: [{"max": 65535, "min": 0}]
+          rule: RunAsAny
+        supplementalGroups:
+          ranges: [{"max": 65535, "min": 0}]
+          rule: RunAsAny
+        volumes:
+        - configMap
+        - downwardAPI
+        - emptyDir
+        - persistentVolumeClaim
+        - projected
+        - secret
+    - apiVersion: rbac.authorization.k8s.io/v1
+      kind: ClusterRole
+      metadata:
+        name: $(workshop_namespace)-vcluster
+      rules:
+      - apiGroups:
+        - policy
+        resources:
+        - podsecuritypolicies
+        verbs:
+        - use
+        resourceNames:
+        - aa-$(workshop_names

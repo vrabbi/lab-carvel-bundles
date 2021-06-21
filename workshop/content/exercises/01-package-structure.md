@@ -11,6 +11,10 @@ command: tree packages
 ```
 
 ```terminal:execute
+command: kubectl create ns eduk8s
+```
+
+```terminal:execute
 command: ytt -f packages/educates/bundle/config | k apply -f -
 ```
 

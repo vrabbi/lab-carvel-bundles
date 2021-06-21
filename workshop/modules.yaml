@@ -5,7 +5,7 @@ modules:
     setup-environment:
         name: Setup Environment
         exit_sign: Start Workshop
-    exercises/01-package -structure:
+    exercises/01-package-structure:
         name: Package Structure
     workshop-summary:
         name: Workshop Summary

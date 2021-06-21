@@ -1,5 +1,5 @@
 ```terminal:execute
-command: tree -L
+command: tree packages
 ```
 
 ```terminal:execute

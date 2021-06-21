@@ -1,12 +1,5 @@
-
 ```terminal:execute
-command: |
-  mkdir -v -p packages/educates
-  mkdir -v packages/educates/bundle
-  mkdir -v packages/educates/bundle/config
-  mkdir -v packages/educates/bundle/.imgpkg
-  mkdir -v packages/educates/bundle/config/overlay
-  mkdir -v packages/educates/bundle/config/upstream
+command: tree -L
 ```
 
 ```terminal:execute
@@ -20,11 +13,17 @@ command: |
     - path: upstream
       git:
         url: https://github.com/eduk8s/eduk8s
-        ref: origin/master
+        ref: 21.05.10.1
       newRootPath: resources
+      excludePaths:
+      - resources/kustomization.yaml
   EOF
 ```
 
 ```terminal:execute
 command: (cd packages/educates/bundle; vendir sync)
+```
+
+```terminal:execute
+command: tree packages
 ```

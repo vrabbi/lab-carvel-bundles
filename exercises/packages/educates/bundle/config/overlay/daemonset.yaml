@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: educates-prepull
+spec:
+  selector:
+    matchLabels:
+      app: educates-prepull
+  template:
+    metadata:
+      labels:
+        app: educates-prepull
+    spec:
+      initContainers:
+      - name: training-portal
+        image: quay.io/eduk8s/eduk8s-portal:master
+        command: ["/bin/true"]
+      - name: base-environment 
+        image: quay.io/eduk8s/base-environment:master
+        command: ["/bin/true"]
+      containers:
+      - name: pause
+        image: gcr.io/google_containers/pause

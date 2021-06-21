@@ -297,4 +297,4 @@ spec:
         verbs:
         - use
         resourceNames:
-        - aa-$(workshop_names
+        - aa-$(workshop_namespace)-vcluster

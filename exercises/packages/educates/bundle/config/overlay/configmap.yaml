@@ -1,0 +1,13 @@
+#@ load("@ytt:data", "data")
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: eduk8s-images
+  namespace: #@ data.values.namespace
+data:
+  PORTAL_IMAGE: quay.io/eduk8s/eduk8s-portal:210429.013717.d89e4b8
+  BASE_ENVIRONMENT_IMAGE: quay.io/eduk8s/base-environment:210508.015017.4546935
+  JDK8_ENVIRONMENT_IMAGE: quay.io/eduk8s/jdk8-environment:210508.022439.0e1deca
+  JDK11_ENVIRONMENT_IMAGE: quay.io/eduk8s/jdk11-environment:210508.022420.1da6880
+  CONDA_ENVIRONMENT_IMAGE: quay.io/eduk8s/conda-environment:210508.022321.98b76aa

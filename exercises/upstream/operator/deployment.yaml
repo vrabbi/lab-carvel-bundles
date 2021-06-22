@@ -22,11 +22,8 @@ spec:
       - name: eduk8s
         image: #@ data.values.imageVersions.platform.operator
         #@ tag = data.values.imageVersions.platform.operator.split(":")
-        #@ if len(tag) <= 1 or tag[-1] in ["latest", "main", "master", "develop"]:
-        imagePullPolicy: Always
-        #@ else:
-        imagePullPolicy: IfNotPresent
-        #@ end
+        #@ always = len(tag) <= 1 or tag[-1] in ["latest", "main", "master", "develop"]
+        imagePullPolicy: #@ always and "Always" or "IfNotPresent"
         envFrom:
         - configMapRef:
             name: eduk8s-images

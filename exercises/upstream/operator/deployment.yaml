@@ -21,8 +21,12 @@ spec:
       containers:
       - name: eduk8s
         image: #@ data.values.images.core.operator
-        #! Need to work out how can set this based on tag of image.
+        #@ tag = data.values.images.core.operator.split(":")
+        #@ if len(tag) <= 1 or tag[-1] in ["latest", "main", "master", "develop"]:
+        imagePullPolicy: Always
+        #@ else:
         imagePullPolicy: IfNotPresent
+        #@ end
         envFrom:
         - configMapRef:
             name: eduk8s-images

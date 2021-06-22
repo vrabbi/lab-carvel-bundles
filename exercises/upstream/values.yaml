@@ -7,8 +7,8 @@
 namespace: eduk8s
 
 #! Container image versions for various components of Educates.
-images:
-  core:
+imageVersions:
+  platform:
     operator: quay.io/eduk8s/eduk8s-operator:210508.025026.38e63af
     portal: quay.io/eduk8s/eduk8s-portal:210429.013717.d89e4b8
   environments:

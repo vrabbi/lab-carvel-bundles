@@ -20,8 +20,8 @@ spec:
       serviceAccountName: eduk8s
       containers:
       - name: eduk8s
-        image: #@ data.values.images.core.operator
-        #@ tag = data.values.images.core.operator.split(":")
+        image: #@ data.values.imageVersions.platform.operator
+        #@ tag = data.values.imageVersions.platform.operator.split(":")
         #@ if len(tag) <= 1 or tag[-1] in ["latest", "main", "master", "develop"]:
         imagePullPolicy: Always
         #@ else:

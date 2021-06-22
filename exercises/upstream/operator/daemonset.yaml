@@ -16,7 +16,7 @@ spec:
         app: educates-prepull
     spec:
       initContainers:
-      #@ environments = data.values.images.environments
+      #@ environments = data.values.imageVersions.environments
       #@ prepull = data.values.prepullEnvironmentImages
       #@ for i in range(len(prepull)):
       #@ if hasattr(environments, prepull[i]):

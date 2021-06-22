@@ -6,8 +6,8 @@ metadata:
   name: eduk8s-images
   namespace: #@ data.values.namespace
 data:
-  PORTAL_IMAGE: #@ data.values.images.core.portal
-  BASE_ENVIRONMENT_IMAGE: #@ data.values.images.environments.base
-  JDK8_ENVIRONMENT_IMAGE: #@ data.values.images.environments.jdk8
-  JDK11_ENVIRONMENT_IMAGE: #@ data.values.images.environments.jdk11
-  CONDA_ENVIRONMENT_IMAGE: #@ data.values.images.environments.conda
+  PORTAL_IMAGE: #@ data.values.imageVersions.platform.portal
+  BASE_ENVIRONMENT_IMAGE: #@ data.values.imageVersions.environments.base
+  JDK8_ENVIRONMENT_IMAGE: #@ data.values.imageVersions.environments.jdk8
+  JDK11_ENVIRONMENT_IMAGE: #@ data.values.imageVersions.environments.jdk11
+  CONDA_ENVIRONMENT_IMAGE: #@ data.values.imageVersions.environments.conda

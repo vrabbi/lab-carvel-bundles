@@ -16,11 +16,11 @@ spec:
     spec:
       initContainers:
       - name: training-portal
-        image: quay.io/eduk8s/eduk8s-portal:master
+        image: #@ data.values.images.training-portal
         command: ["/bin/true"]
       - name: base-environment 
-        image: quay.io/eduk8s/base-environment:master
+        image: #@ data.values.images.base-environment
         command: ["/bin/true"]
       containers:
       - name: pause
-        image: gcr.io/google_containers/pause
+        image: gcr.io/google_containers/pause:latest

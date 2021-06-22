@@ -1,0 +1,29 @@
+#@ load("@ytt:data", "data")
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: eduk8s-operator
+  namespace: #@ data.values.namespace
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      deployment: eduk8s-operator
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        deployment: eduk8s-operator
+    spec:
+      serviceAccountName: eduk8s
+      containers:
+      - name: eduk8s
+        image: #@ data.values.images.system-operator
+        #! Need to work out how can set this based on tag of image.
+        imagePullPolicy: IfNotPresent
+        envFrom:
+        - configMapRef:
+            name: eduk8s-images
+            optional: true

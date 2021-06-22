@@ -1,13 +1,5 @@
 ```terminal:execute
-command: tree packages
-```
-
-```terminal:execute
-command: (cd packages/educates/bundle; vendir sync)
-```
-
-```terminal:execute
-command: tree packages
+command: tree upstream
 ```
 
 ```terminal:execute
@@ -15,7 +7,7 @@ command: kubectl create ns eduk8s
 ```
 
 ```terminal:execute
-command: ytt -f packages/educates/bundle/config | k apply -f -
+command: ytt -f upstream | k apply -f -
 ```
 
 ```terminal:execute

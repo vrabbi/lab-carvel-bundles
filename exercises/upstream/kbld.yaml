@@ -1,0 +1,19 @@
+---
+apiVersion: kbld.k14s.io/v1alpha1
+kind: Config
+
+minimumRequiredVersion: 0.29.0
+
+searchRules:
+- keyMatcher:
+    path: [imageVersions, platform, operator]
+- keyMatcher:
+    path: [imageVersions, platform, portal]
+- keyMatcher:
+    path: [imageVersions, environments, base]
+- keyMatcher:
+    path: [imageVersions, environments, jdk8]
+- keyMatcher:
+    path: [imageVersions, environments, jdk11]
+- keyMatcher:
+    path: [imageVersions, environments, conda]

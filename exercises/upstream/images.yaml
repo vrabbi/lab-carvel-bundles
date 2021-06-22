@@ -1,0 +1,25 @@
+---
+apiVersion: imgpkg.carvel.dev/v1alpha1
+images:
+- annotations:
+    kbld.carvel.dev/id: gcr.io/google_containers/pause:latest
+  image: gcr.io/google_containers/pause@sha256:a78c2d6208eff9b672de43f880093100050983047b7b0afe0217d3656e1b0d5f
+- annotations:
+    kbld.carvel.dev/id: quay.io/eduk8s/base-environment:210508.015017.4546935
+  image: quay.io/eduk8s/base-environment@sha256:0349a68f4144260d7ade51f1ed2b3b2b59f48f38cff6e0c61d2b1df0dfa68b7f
+- annotations:
+    kbld.carvel.dev/id: quay.io/eduk8s/conda-environment:210508.022321.98b76aa
+  image: quay.io/eduk8s/conda-environment@sha256:321d175c672d15507fcad523450f4bd2b570f77302d99480941ce77acb626fc1
+- annotations:
+    kbld.carvel.dev/id: quay.io/eduk8s/eduk8s-operator:210508.025026.38e63af
+  image: quay.io/eduk8s/eduk8s-operator@sha256:f27924516b0242a63c307dc939fb8ee3b161d9fc9315d98b703ef3ba54c5e4e7
+- annotations:
+    kbld.carvel.dev/id: quay.io/eduk8s/eduk8s-portal:210429.013717.d89e4b8
+  image: quay.io/eduk8s/eduk8s-portal@sha256:a1be78466b1b03e808b2f8837a7d5ae7c6bada500df00d22dbc585b6cc12e138
+- annotations:
+    kbld.carvel.dev/id: quay.io/eduk8s/jdk11-environment:210508.022420.1da6880
+  image: quay.io/eduk8s/jdk11-environment@sha256:0333f6ea3abc8b282438bb05ccbd09b2d91583c2adb59befdfaa7538e803d02d
+- annotations:
+    kbld.carvel.dev/id: quay.io/eduk8s/jdk8-environment:210508.022439.0e1deca
+  image: quay.io/eduk8s/jdk8-environment@sha256:e70b455605d80d18536c3bda1c5f27e8d8f35341f279c57d2d6af5d2ce2f1e0b
+kind: ImagesLock

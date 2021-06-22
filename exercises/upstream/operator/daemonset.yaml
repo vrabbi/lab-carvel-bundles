@@ -19,7 +19,7 @@ spec:
       #@ environments = data.values.images.environments
       #@ prepull = data.values.prepullEnvironmentImages
       #@ for i in range(len(prepull)):
-      #@ if hasattr(environments, prepull[i])
+      #@ if hasattr(environments, prepull[i]):
       - name: #@ prepull[i]
         image: #@ getattr(environments, prepull[i])
         command: ["/bin/true"]

@@ -1,5 +1,6 @@
 #@ load("@ytt:data", "data")
 
+#@ if data.values.prepullEnvironmentImages:
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:
@@ -15,9 +16,16 @@ spec:
         app: educates-prepull
     spec:
       initContainers:
-      - name: base-environment 
-        image: #@ data.values.images.environments.base
+      #@ environments = data.values.images.environments
+      #@ prepull = data.values.prepullEnvironmentImages
+      #@ for i in range(len(prepull)):
+      #@ if hasattr(environments, prepull[i])
+      - name: #@ prepull[i]
+        image: #@ getattr(environments, prepull[i])
         command: ["/bin/true"]
+      #@ end
+      #@ end
       containers:
       - name: pause
         image: gcr.io/google_containers/pause:latest
+#@ end

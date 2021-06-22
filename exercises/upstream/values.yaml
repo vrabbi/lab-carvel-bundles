@@ -16,3 +16,6 @@ images:
     jdk8: quay.io/eduk8s/jdk8-environment:210508.022439.0e1deca
     jdk11: quay.io/eduk8s/jdk11-environment:210508.022420.1da6880
     conda: quay.io/eduk8s/conda-environment:210508.022321.98b76aa
+
+#! Prepull workshop environment images to nodes in cluster.
+prepullEnvironmentImages: ["base"]

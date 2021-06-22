@@ -6,7 +6,7 @@
 #!   https://github.com/eduk8s/eduk8s-operator/issues/111
 namespace: eduk8s
 
-#! Container images for various components of Educates.
+#! Container image versions for various components of Educates.
 images:
   core:
     operator: quay.io/eduk8s/eduk8s-operator:210508.025026.38e63af
@@ -17,5 +17,7 @@ images:
     jdk11: quay.io/eduk8s/jdk11-environment:210508.022420.1da6880
     conda: quay.io/eduk8s/conda-environment:210508.022321.98b76aa
 
-#! Prepull workshop environment images to nodes in cluster.
+#! Prepull workshop environment images to nodes in cluster. Should be
+#! empty list if no workshop environment images should be prepulled, or
+#! list names of environments, e.g.: ["base", "jdk8", "jdk11", "conda"].
 prepullEnvironmentImages: ["base"]

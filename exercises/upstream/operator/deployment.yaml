@@ -20,7 +20,7 @@ spec:
       serviceAccountName: eduk8s
       containers:
       - name: eduk8s
-        image: #@ data.values.images.system-operator
+        image: #@ data.values.images.core.operator
         #! Need to work out how can set this based on tag of image.
         imagePullPolicy: IfNotPresent
         envFrom:

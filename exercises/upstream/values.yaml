@@ -8,9 +8,11 @@ namespace: eduk8s
 
 #! Container images for various components of Educates.
 images:
-  system-operator: quay.io/eduk8s/eduk8s-operator:210508.025026.38e63af
-  training-portal: quay.io/eduk8s/eduk8s-portal:210429.013717.d89e4b8
-  base-environment: quay.io/eduk8s/base-environment:210508.015017.4546935
-  jdk8-environment: quay.io/eduk8s/jdk8-environment:210508.022439.0e1deca
-  jdk11-environment: quay.io/eduk8s/jdk11-environment:210508.022420.1da6880
-  conda-environment: quay.io/eduk8s/conda-environment:210508.022321.98b76aa
+  core:
+    operator: quay.io/eduk8s/eduk8s-operator:210508.025026.38e63af
+    portal: quay.io/eduk8s/eduk8s-portal:210429.013717.d89e4b8
+  environments:
+    base: quay.io/eduk8s/base-environment:210508.015017.4546935
+    jdk8: quay.io/eduk8s/jdk8-environment:210508.022439.0e1deca
+    jdk11: quay.io/eduk8s/jdk11-environment:210508.022420.1da6880
+    conda: quay.io/eduk8s/conda-environment:210508.022321.98b76aa

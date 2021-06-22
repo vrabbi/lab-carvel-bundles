@@ -15,11 +15,8 @@ spec:
         app: educates-prepull
     spec:
       initContainers:
-      - name: training-portal
-        image: #@ data.values.images.training-portal
-        command: ["/bin/true"]
       - name: base-environment 
-        image: #@ data.values.images.base-environment
+        image: #@ data.values.images.environments.base
         command: ["/bin/true"]
       containers:
       - name: pause

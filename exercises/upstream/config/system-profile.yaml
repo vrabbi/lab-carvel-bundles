@@ -7,9 +7,11 @@ metadata:
 spec:
   ingress:
     domain: #@ data.values.ingressDomain
-    #@ if hasattr(data.values, "ingressSecret"):
+    #@ certificate = data.values.ingressSecret.certificate
+    #@ privateKey = data.values.ingressSecret.privateKey
+    #@ if certificate and privateKey:
     secret: #@ "{}-tls".format(data.values.ingressDomain)
     #@ end
-    #@ if hasattr(data.values, "ingressClass"):
+    #@ if data.values.ingressClass:
     class: #@ data.values.ingressClass
     #@ end

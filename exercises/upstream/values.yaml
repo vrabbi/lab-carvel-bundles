@@ -11,13 +11,13 @@ ingressDomain: workshops.example.com
 
 #! Ingress class for where multiple ingress controllers exist and need to
 #! use that which is not marked as the default.
-#! ingressClass: default
+ingressClass: null
 
 #! SSL certificate for secure ingress. Must be a wildcard certificate for
 #! children of DNS parent ingress subdomain. 
-#! ingressSecret:
-#!   tls.crt: ...
-#!   tls.key: ...
+ingressSecret:
+  certificate: null
+  privateKey: null
 
 #! Container image versions for various components of Educates. The Educates
 #! operator will need to be modified to read names of images for the registry

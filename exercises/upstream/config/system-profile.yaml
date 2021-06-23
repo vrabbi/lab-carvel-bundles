@@ -1,5 +1,12 @@
 #@ load("@ytt:data", "data")
 
+#@ pull_secrets = []
+#@ registry_hostname = data.values.imageRegistry.hostname
+#@ registry_username = data.values.imageRegistry.username
+#@ if registry_hostname and registry_username:
+#@ pull_secrets.append("{}-pull".format(registry_hostname))
+#@ end
+
 apiVersion: training.eduk8s.io/v1alpha1
 kind: SystemProfile
 metadata:
@@ -15,3 +22,8 @@ spec:
     #@ if data.values.ingressClass:
     class: #@ data.values.ingressClass
     #@ end
+  #@ if pull_secrets:
+  environment:
+    secrets:
+      pull: #@ pull_secrets
+  #@ end

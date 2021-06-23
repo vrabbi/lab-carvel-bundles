@@ -19,6 +19,15 @@ ingressSecret:
   certificate: null
   privateKey: null
 
+#! Primary image registry where Educates container images are stored. It
+#! is only necessary to define hostname and credentials when that image
+#! registry requires authentication to access images. This principally
+#! exists to allow relocation of images through Carvel image bundles.
+imageRegistry:
+  hostname: null
+  username: null
+  password: null
+
 #! Container image versions for various components of Educates. The Educates
 #! operator will need to be modified to read names of images for the registry
 #! and docker in docker from config map to enable disconnected install.

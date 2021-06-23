@@ -15,7 +15,7 @@ command: kubectl create ns eduk8s
 ```
 
 ```terminal:execute
-command: ytt -f bundles/educates/config | kbld -f - | kapp deploy -a educates -f - -y
+command: ytt -f bundles/educates/config -v ingressDomain={{ingress_domain}} | kbld -f - | kapp deploy -a educates -f - -y
 ```
 
 ```terminal:execute

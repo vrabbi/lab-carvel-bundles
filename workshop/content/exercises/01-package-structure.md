@@ -1,5 +1,5 @@
 ```terminal:execute
-command: tree upstream
+command: tree bundles
 ```
 
 ```terminal:execute

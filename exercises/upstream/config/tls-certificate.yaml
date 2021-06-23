@@ -1,6 +1,6 @@
 #@ load("@ytt:data", "data")
 
-#@ if data.values.ingressSecret:
+#@ if hasattr(data.values, "ingressSecret"):
 apiVersion: v1
 kind: Secret
 metadata:

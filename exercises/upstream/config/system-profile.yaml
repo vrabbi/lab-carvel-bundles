@@ -1,3 +1,5 @@
+#@ load("@ytt:data", "data")
+
 apiVersion: training.eduk8s.io/v1alpha1
 kind: SystemProfile
 metadata:

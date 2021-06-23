@@ -3,7 +3,7 @@ command: tree upstream
 ```
 
 ```terminal:execute
-command: imgpkg push -b {{registry_host}}/educates:21.05.10.1 -f upstream
+command: imgpkg push -b {{registry_host}}/educates:21.05.10.1 -f bundles/educates
 ```
 
 ```terminal:execute
@@ -15,7 +15,7 @@ command: kubectl create ns eduk8s
 ```
 
 ```terminal:execute
-command: ytt -f upstream | kbld -f - | kapp deploy -a educates -f - -y
+command: ytt -f bundles/educates/config | kbld -f - | kapp deploy -a educates -f - -y
 ```
 
 ```terminal:execute

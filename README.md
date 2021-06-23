@@ -1,4 +1,4 @@
-LAB - Oackage Testing
+LAB - Package Testing
 =====================
 
 Workshop exploring Carvel packages.

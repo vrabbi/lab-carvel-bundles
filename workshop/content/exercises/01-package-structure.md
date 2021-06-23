@@ -15,7 +15,7 @@ command: kubectl create ns eduk8s
 ```
 
 ```terminal:execute
-command: ytt -f upstream | kbld -f - | kapp deploy -a educates -f -
+command: ytt -f upstream | kbld -f - | kapp deploy -a educates -f - -y
 ```
 
 ```terminal:execute

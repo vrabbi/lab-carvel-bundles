@@ -7,7 +7,7 @@ command: imgpkg push -b {{registry_host}}/educates:21.05.10.1 -f upstream
 ```
 
 ```terminal:execute
-command: imgpkg copy -b {{registry_host}}/educates:21.05.10.1 --to-repo={{registry_host}}/local-educates
+command: imgpkg copy -b {{registry_host}}/educates:21.05.10.1 --to-repo={{registry_host}}/educates-local
 ```
 
 ```terminal:execute

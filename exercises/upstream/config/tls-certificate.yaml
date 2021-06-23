@@ -1,0 +1,13 @@
+#@ load("@ytt:data", "data")
+
+#@ if data.values.ingressSecret:
+apiVersion: v1
+kind: Secret
+metadata:
+  name: #@ "{}-tls".format(data.values.ingressDomain)
+  namespace: #@ data.values.namespace
+type: kubernetes.io/tls
+stringData:
+  tls.crt: #@ data.values.ingressSecret["tls.crt"]
+  tls.key: #@ data.values.ingressSecret["tls.key"]
+#@ end

@@ -10,6 +10,10 @@ searchRules:
 - keyMatcher:
     path: [imageVersions, platform, portal]
 - keyMatcher:
+    path: [imageVersions, platform, registry]
+- keyMatcher:
+    path: [imageVersions, platform, dind]
+- keyMatcher:
     path: [imageVersions, environments, base]
 - keyMatcher:
     path: [imageVersions, environments, jdk8]

@@ -6,11 +6,28 @@
 #!   https://github.com/eduk8s/eduk8s-operator/issues/111
 namespace: eduk8s
 
-#! Container image versions for various components of Educates.
+#! DNS parent subdomain used for training portal and workshop ingresses.
+ingressDomain: workshops.example.com
+
+#! Ingress class for where multiple ingress controllers exist and need to
+#! use that which is not marked as the default.
+#! ingressClass: default
+
+#! SSL certificate for secure ingress. Must be a wildcard certificate for
+#! children of DNS parent ingress subdomain. 
+#! ingressSecret:
+#!   tls.crt: ...
+#!   tls.key: ...
+
+#! Container image versions for various components of Educates. The Educates
+#! operator needs to be modified to read names of images for the registry
+#! and docker in docker from config map to enable disconnected install.
 imageVersions:
   platform:
     operator: quay.io/eduk8s/eduk8s-operator:210508.025026.38e63af
     portal: quay.io/eduk8s/eduk8s-portal:210429.013717.d89e4b8
+    #! registry: registry.hub.docker.com/library/registry:2.6.1
+    #! dind: quay.io/eduk8s/eduk8s-dind-rootless:201105.032145.5dfb9e6
   environments:
     base: quay.io/eduk8s/base-environment:210508.015017.4546935
     jdk8: quay.io/eduk8s/jdk8-environment:210508.022439.0e1deca

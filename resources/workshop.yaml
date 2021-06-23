@@ -33,7 +33,7 @@ spec:
         enabled: true
       registry:
         enabled: true
-        storage: 25Gi
+        storage: 10Gi
     objects:
     - apiVersion: v1
       kind: ServiceAccount

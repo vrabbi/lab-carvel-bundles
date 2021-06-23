@@ -1,6 +1,7 @@
 #@ load("@ytt:data", "data")
+#@ load("/helpers.star", "image_reference")
 
-#@ if data.values.prepullEnvironmentImages:
+#@ if data.values.prepullImages:
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:
@@ -16,12 +17,13 @@ spec:
         app: educates-prepull
     spec:
       initContainers:
-      #@ environments = data.values.imageVersions.environments
-      #@ prepull = data.values.prepullEnvironmentImages
+      #@ images = data.values.imageVersions
+      #@ prepull = data.values.prepullImages
       #@ for i in range(len(prepull)):
-      #@ if hasattr(environments, prepull[i]):
+      #@ image = image_reference(prepull[i])
+      #@ if image:
       - name: #@ prepull[i]
-        image: #@ getattr(environments, prepull[i])
+        image: #@ image
         command: ["/bin/true"]
       #@ end
       #@ end

@@ -1,4 +1,5 @@
 #@ load("@ytt:data", "data")
+#@ load("/helpers.star", "image_reference")
 
 apiVersion: apps/v1
 kind: Deployment
@@ -20,9 +21,10 @@ spec:
       serviceAccountName: eduk8s
       containers:
       - name: eduk8s
-        image: #@ data.values.imageVersions.platform.operator
-        #@ tag = data.values.imageVersions.platform.operator.split(":")
+        #@ image = image_reference("system-operator")
+        #@ tag = image.split(":")
         #@ always = len(tag) <= 1 or tag[-1] in ["latest", "main", "master", "develop"]
+        image: #@ image
         imagePullPolicy: #@ always and "Always" or "IfNotPresent"
         envFrom:
         - configMapRef:

@@ -20,21 +20,28 @@ ingressDomain: workshops.example.com
 #!   tls.key: ...
 
 #! Container image versions for various components of Educates. The Educates
-#! operator needs to be modified to read names of images for the registry
+#! operator will need to be modified to read names of images for the registry
 #! and docker in docker from config map to enable disconnected install.
+#!   https://github.com/eduk8s/eduk8s-operator/issues/112
 imageVersions:
-  platform:
-    operator: quay.io/eduk8s/eduk8s-operator:210508.025026.38e63af
-    portal: quay.io/eduk8s/eduk8s-portal:210429.013717.d89e4b8
-    #! registry: registry.hub.docker.com/library/registry:2.6.1
-    #! dind: quay.io/eduk8s/eduk8s-dind-rootless:201105.032145.5dfb9e6
-  environments:
-    base: quay.io/eduk8s/base-environment:210508.015017.4546935
-    jdk8: quay.io/eduk8s/jdk8-environment:210508.022439.0e1deca
-    jdk11: quay.io/eduk8s/jdk11-environment:210508.022420.1da6880
-    conda: quay.io/eduk8s/conda-environment:210508.022321.98b76aa
+- name: system-operator
+  image: quay.io/eduk8s/eduk8s-operator:210508.025026.38e63af
+- name: training-portal
+  image: quay.io/eduk8s/eduk8s-portal:210429.013717.d89e4b8
+#! - name: docker-registry
+#!   image: registry.hub.docker.com/library/registry:2.6.1
+#! - name: dind-rootless
+#!   image: quay.io/eduk8s/eduk8s-dind-rootless:201105.032145.5dfb9e6
+- name: base-environment
+  image: quay.io/eduk8s/base-environment:210508.015017.4546935
+- name: jdk8-environment
+  image: quay.io/eduk8s/jdk8-environment:210508.022439.0e1deca
+- name: jdk11-environment
+  image: quay.io/eduk8s/jdk11-environment:210508.022420.1da6880
+- name: conda-environment
+  image: quay.io/eduk8s/conda-environment:210508.022321.98b76aa
 
-#! Prepull workshop environment images to nodes in cluster. Should be
-#! empty list if no workshop environment images should be prepulled, or
-#! list names of environments, e.g.: ["base", "jdk8", "jdk11", "conda"].
-prepullEnvironmentImages: ["base"]
+#! Prepull images to nodes in cluster. Should be empty list if no images
+#! should be prepulled. Normally you would only want to prepull workshop
+#! images. This is done to reduce start up times for sessions.
+prepullImages: ["base-environment"]

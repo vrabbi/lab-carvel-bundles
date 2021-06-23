@@ -1,4 +1,5 @@
 #@ load("@ytt:data", "data")
+#@ load("/helpers.star", "image_reference")
 
 apiVersion: v1
 kind: ConfigMap
@@ -6,8 +7,8 @@ metadata:
   name: eduk8s-images
   namespace: #@ data.values.namespace
 data:
-  PORTAL_IMAGE: #@ data.values.imageVersions.platform.portal
-  BASE_ENVIRONMENT_IMAGE: #@ data.values.imageVersions.environments.base
-  JDK8_ENVIRONMENT_IMAGE: #@ data.values.imageVersions.environments.jdk8
-  JDK11_ENVIRONMENT_IMAGE: #@ data.values.imageVersions.environments.jdk11
-  CONDA_ENVIRONMENT_IMAGE: #@ data.values.imageVersions.environments.conda
+  PORTAL_IMAGE: #@ image_reference("training-portal")
+  BASE_ENVIRONMENT_IMAGE: #@ image_reference("base-environment")
+  JDK8_ENVIRONMENT_IMAGE: #@ image_reference("jdk8-environment")
+  JDK11_ENVIRONMENT_IMAGE: #@ image_reference("jdk11-environment")
+  CONDA_ENVIRONMENT_IMAGE: #@ image_reference("conda-environment")

@@ -7,6 +7,10 @@ command: imgpkg push -b {{registry_host}}/educates:21.05.10.1 -f bundles/educate
 ```
 
 ```terminal:execute
+command: imgpkg pull -b {{registry_host}}/educates:21.05.10.1 -o /tmp/educates-bundle
+```
+
+```terminal:execute
 command: imgpkg copy -b {{registry_host}}/educates:21.05.10.1 --to-repo={{registry_host}}/educates-local
 ```
 

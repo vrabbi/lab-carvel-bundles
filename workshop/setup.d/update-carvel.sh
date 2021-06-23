@@ -1,5 +1,9 @@
 #!/bin/bash
 
+set -x
+
+set -eo pipefail
+
 # This workaround is due to lack of shasum in workshop image. The underlying
 # problem is actually in the Carvel installer and it needs to changed, but
 # Educates workshop image should also probably install it.
@@ -26,3 +30,5 @@ curl -L --silent --show-error --fail -o /tmp/carvel.sh https://carvel.dev/instal
     export K14SIO_INSTALL_BIN_DIR=/opt/kubernetes/bin && \
     sh -x /tmp/carvel.sh && \
     rm /tmp/carvel.sh
+
+rm -rf /tmp/carvel

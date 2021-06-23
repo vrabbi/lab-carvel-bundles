@@ -10,6 +10,6 @@ spec:
     #@ if hasattr(data.values, "ingressSecret"):
     secret: #@ "{}-tls".format(data.values.ingressDomain)
     #@ end
-    #@ if data.values.ingressClass:
+    #@ if hasattr(data.values, "ingressClass"):
     class: #@ data.values.ingressClass
     #@ end

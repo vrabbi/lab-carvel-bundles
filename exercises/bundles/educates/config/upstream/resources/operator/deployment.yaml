@@ -1,11 +1,7 @@
-#@ load("@ytt:data", "data")
-#@ load("/helpers.star", "image_reference", "image_pull_policy")
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: eduk8s-operator
-  namespace: #@ data.values.namespace
 spec:
   replicas: 1
   selector:
@@ -21,9 +17,8 @@ spec:
       serviceAccountName: eduk8s
       containers:
       - name: eduk8s
-        #@ image = image_reference("system-operator")
-        image: #@ image
-        imagePullPolicy: #@ image_pull_policy(image)
+        image: quay.io/eduk8s/eduk8s-operator:develop
+        imagePullPolicy: Always
         envFrom:
         - configMapRef:
             name: eduk8s-images

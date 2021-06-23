@@ -1,0 +1,11 @@
+apiVersion: vendir.k14s.io/v1alpha1
+directories:
+- contents:
+  - git:
+      commitTitle: Update to version 210508.025026.38e63af of educates operator.
+      sha: 7b0abb846fb72f29a34947582f86640fc964a95b
+      tags:
+      - 21.05.10.1
+    path: .
+  path: config/upstream
+kind: LockConfig

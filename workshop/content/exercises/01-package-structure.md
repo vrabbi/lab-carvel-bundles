@@ -3,6 +3,14 @@ command: tree bundles
 ```
 
 ```terminal:execute
+command: (cd bundles/educates; vendir sync)
+```
+
+```terminal:execute
+command: (cd bundles/educates; kbld config --imgpkg-lock-output .imgpkg/images.yml)
+```
+
+```terminal:execute
 command: imgpkg push -b {{registry_host}}/educates:21.05.10.1 -f bundles/educates
 ```
 

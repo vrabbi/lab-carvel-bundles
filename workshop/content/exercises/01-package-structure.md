@@ -23,11 +23,19 @@ command: imgpkg copy -b {{registry_host}}/educates:21.05.10.1 --to-repo={{regist
 ```
 
 ```terminal:execute
+command: imgpkg pull -b {{registry_host}}/educates:21.05.10.1 -o=educates-local
+```
+
+```terminal:execute
 command: kubectl create ns eduk8s
 ```
 
 ```terminal:execute
-command: ytt -f bundles/educates/config -v ingressDomain={{ingress_domain}} | kbld -f - | kapp deploy -a educates -f - -y
+command: |
+  ytt -f educates-local -v ingressDomain={{ingress_domain}} \
+    -v imageRegistry.hostname=$REGISTRY_HOSTNAME \
+    -v imageRegistry.username=$REGISTRY_USERNAME \
+    -v imageRegistry.password=$REGISTRY_PASSWORD | kbld -f - | kapp deploy -a educates -f - -y
 ```
 
 ```terminal:execute

@@ -1,0 +1,15 @@
+---
+apiVersion: kbld.k14s.io/v1alpha1
+kind: Config
+minimumRequiredVersion: 0.15.0
+searchRules:
+- keyMatcher:
+    name: PORTAL_IMAGE
+- keyMatcher:
+    name: BASE_ENVIRONMENT_IMAGE
+- keyMatcher:
+    name: JDK8_ENVIRONMENT_IMAGE
+- keyMatcher:
+    name: JDK11_ENVIRONMENT_IMAGE
+- keyMatcher:
+    name: CONDA_ENVIRONMENT_IMAGE

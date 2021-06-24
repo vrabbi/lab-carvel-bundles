@@ -39,7 +39,9 @@ command: |
   ytt -f educates-local/config -v ingressDomain={{ingress_domain}} \
     -v imageRegistry.hostname=$REGISTRY_HOST \
     -v imageRegistry.username=$REGISTRY_USERNAME \
-    -v imageRegistry.password=$REGISTRY_PASSWORD | kbld -f - | kapp deploy -a educates -f - -y
+    -v imageRegistry.password=$REGISTRY_PASSWORD | \
+    kbld -f educates-local/kbld.yml -f educates-local/.imgpkg/images.yml -f - | \
+    kapp deploy -a educates -f - -y
 ```
 
 ```terminal:execute

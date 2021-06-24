@@ -21,5 +21,6 @@ spec:
         image: #@ image
         imagePullPolicy: #@ image_pull_policy(image)
       #@ if pull_secrets:
+      #@overlay/match missing_ok=True
       imagePullSecrets: #@ pull_secrets
       #@ end

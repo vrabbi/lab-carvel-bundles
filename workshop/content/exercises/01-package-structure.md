@@ -7,7 +7,7 @@ command: (cd bundles/educates; vendir sync)
 ```
 
 ```terminal:execute
-command: (cd bundles/educates; kbld --imgpkg-lock-output .imgpkg/images.yml)
+command: (cd bundles/educates; kbld -f config --imgpkg-lock-output .imgpkg/images.yml)
 ```
 
 ```terminal:execute

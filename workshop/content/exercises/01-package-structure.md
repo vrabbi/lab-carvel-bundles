@@ -19,11 +19,15 @@ command: imgpkg pull -b {{registry_host}}/educates:21.05.10.1 -o /tmp/educates-b
 ```
 
 ```terminal:execute
-command: imgpkg copy -b {{registry_host}}/educates:21.05.10.1 --to-repo={{registry_host}}/educates-local
+command: imgpkg copy -b {{registry_host}}/educates:21.05.10.1 --to-repo {{registry_host}}/educates-local
 ```
 
 ```terminal:execute
-command: imgpkg pull -b {{registry_host}}/educates:21.05.10.1 -o=educates-local
+command: imgpkg pull -b {{registry_host}}/educates-local:21.05.10.1 -o educates-local
+```
+
+```terminal:execute
+command: kubectl apply -f https://github.com/vmware-tanzu/carvel-kapp-controller/releases/download/v0.19.0/release.yml
 ```
 
 ```terminal:execute

@@ -3,27 +3,23 @@ command: tree bundles
 ```
 
 ```terminal:execute
-command: (cd bundles/educates; vendir sync)
+command: (cd packages/educates/bundle; vendir sync)
 ```
 
 ```terminal:execute
-command: (cd bundles/educates; kbld -f config --imgpkg-lock-output .imgpkg/images.yml)
+command: (cd packages/educates/bundle; kbld -f config --imgpkg-lock-output .imgpkg/images.yml)
 ```
 
 ```terminal:execute
-command: imgpkg push -b {{registry_host}}/educates:21.05.10.1 -f bundles/educates
+command: imgpkg push -b {{registry_host}}/educates:21.05.10.1 -f packages/educates/bundle
 ```
 
 ```terminal:execute
-command: imgpkg pull -b {{registry_host}}/educates:21.05.10.1 -o /tmp/educates-bundle
+command: imgpkg copy -b {{registry_host}}/educates:21.05.10.1 --to-repo {{registry_host}}/educates-copy
 ```
 
 ```terminal:execute
-command: imgpkg copy -b {{registry_host}}/educates:21.05.10.1 --to-repo {{registry_host}}/educates-local
-```
-
-```terminal:execute
-command: imgpkg pull -b {{registry_host}}/educates-local:21.05.10.1 -o educates-local
+command: imgpkg pull -b {{registry_host}}/educates-copy:21.05.10.1 -o educates-copy
 ```
 
 ```terminal:execute
@@ -36,11 +32,11 @@ command: kubectl create ns eduk8s
 
 ```terminal:execute
 command: |
-  ytt -f educates-local/config -v ingressDomain={{ingress_domain}} \
+  ytt -f educates-copy/config -v ingressDomain={{ingress_domain}} \
     -v imageRegistry.host=$REGISTRY_HOST \
     -v imageRegistry.username=$REGISTRY_USERNAME \
     -v imageRegistry.password=$REGISTRY_PASSWORD | \
-    kbld -f educates-local/kbld.yml -f educates-local/.imgpkg/images.yml -f - | \
+    kbld -f educates-copy/kbld.yml -f educates-copy/.imgpkg/images.yml -f - | \
     kapp deploy -a educates -f - -y
 ```
 

@@ -8,6 +8,6 @@ Kubernetes Grid (TKG) clusters.
 Some like to try and compare Carvel to other templating tools for Kubernetes
 such as Kustomize and Helm. Although Carvel can be used to perform tasks
 which those others tools handle, that is only a subset of the functionality
-that the Carvel tools can be used for. The Carvel tool aims to solve much
+that the Carvel tools can be used for. The Carvel tools aim to solve much
 bigger problems than Kustomize and Helm can handle, including helping with
 the task of installation to disconnected environments.

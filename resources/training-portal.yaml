@@ -4,6 +4,7 @@ metadata:
   name: lab-package-testing
 spec:
   portal:
+    password: carvel
     registration:
       type: anonymous
   workshops:

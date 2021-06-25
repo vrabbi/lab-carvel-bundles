@@ -1,13 +1,6 @@
 #@ load("@ytt:data", "data")
 #@ load("@ytt:overlay", "overlay")
-#@ load("/helpers.star", "image_reference", "image_pull_policy")
-
-#@ pull_secrets = []
-#@ registry_host = data.values.imageRegistry.host
-#@ registry_username = data.values.imageRegistry.username
-#@ if registry_host and registry_username:
-#@ pull_secrets.append({"name": "{}-pull".format(registry_host)})
-#@ end
+#@ load("/helpers.star", "image_reference", "image_pull_policy", "image_pull_secrets")
 
 #@overlay/match by=overlay.subset({"kind":"Deployment", "metadata": {"name": "eduk8s-operator"}})
 ---
@@ -20,7 +13,8 @@ spec:
         #@ image = image_reference("system-operator")
         image: #@ image
         imagePullPolicy: #@ image_pull_policy(image)
+      #@ pull_secrets = image_pull_secrets()
       #@ if pull_secrets:
       #@overlay/match missing_ok=True
-      imagePullSecrets: #@ pull_secrets
+      imagePullSecrets: #@ [{"name": name} for name in image_pull_secrets()]
       #@ end

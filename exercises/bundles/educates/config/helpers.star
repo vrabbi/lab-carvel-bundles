@@ -16,6 +16,16 @@ def image_pull_policy(image):
   return always and "Always" or "IfNotPresent"
 end
 
+def image_pull_secrets():
+  pull_secrets = []
+  registry_host = data.values.imageRegistry.host
+  registry_username = data.values.imageRegistry.username
+  if registry_host and registry_username:
+    pull_secrets.append("{}-pull".format(registry_host))
+  end
+  return pull_secrets
+end
+
 def docker_config_json(host, username, password):
   return json.encode({
     "auths": {

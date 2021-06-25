@@ -44,3 +44,15 @@ spec:
       password: #@ data.values.dockerDaemon.proxyCache.password or ""
       #@ end
     #@ end
+  portal:
+    credentials:
+      admin:
+        username: #@ data.values.portalCredentials.systemAdmin.username
+        #@ if data.values.portalCredentials.systemAdmin.password:
+        password: #@ data.values.portalCredentials.systemAdmin.password
+        #@ end
+      robot:
+        username: #@ data.values.portalCredentials.clientAccess.username
+        #@ if data.values.portalCredentials.clientAccess.password:
+        password: #@ data.values.portalCredentials.clientAccess.password
+        #@ end

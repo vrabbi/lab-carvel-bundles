@@ -7,7 +7,7 @@ modules:
         exit_sign: Start Workshop
     exercises/01-disconnected-install:
         name: Disconnected Install
-    exercices/02-using-carvel-tools:
+    exercises/02-using-carvel-tools:
         name: Using Carvel Tools
     exercises/03-templates-vs-overlays:
         name: Templates vs Overlays

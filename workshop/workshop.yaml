@@ -4,5 +4,6 @@ modules:
     activate:
     - workshop-overview
     - setup-environment
+    - exercises/01-disconnected-install
     - exercises/01-package-structure
     - workshop-summary

@@ -34,3 +34,13 @@ spec:
     secrets:
       pull: #@ pull_secrets
   #@ end
+  dockerd:
+    mtu: #@ int(data.values.dockerDaemon.networkMTU)
+    #@ if data.values.dockerDaemon.proxyCache.remoteURL:
+    mirror:
+      remote: #@ data.values.dockerDaemon.proxyCache.remoteURL
+      #@ if data.values.dockerDaemon.proxyCache.username:
+      username: #@ data.values.dockerDaemon.proxyCache.username
+      password: #@ data.values.dockerDaemon.proxyCache.password or ""
+      #@ end
+    #@ end

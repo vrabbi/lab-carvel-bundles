@@ -64,3 +64,14 @@ imageVersions:
 #! should be prepulled. Normally you would only want to prepull workshop
 #! images. This is done to reduce start up times for sessions.
 prepullImages: ["base-environment"]
+
+#! Docker daemon settings when building docker images in a workshop is
+#! enabled. Proxy cache provides a way of partially getting around image
+#! pull limits for Docker Hub image registry, with the remote URL being
+#! set to "https://registry-1.docker.io".
+dockerDaemon:
+  networkMTU: 1500
+  proxyCache:
+    remoteURL: null
+    username: null
+    password: null

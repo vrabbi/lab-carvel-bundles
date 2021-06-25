@@ -8,5 +8,6 @@ modules:
     - exercises/02-using-carvel-tools
     - exercises/03-templates-vs-overlays
     - exercises/04-directory-structure
+    - exercises/05-upstream-resources
     - exercises/01-package-structure
     - workshop-summary

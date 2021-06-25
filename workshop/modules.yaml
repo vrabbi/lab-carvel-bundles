@@ -9,8 +9,8 @@ modules:
         name: Disconnected Install
     exercices/02-using-carvel-tools:
         name: Using Carvel Tools
-    exercises/03-package-structure:
-        name: Package Structure
+    exercises/03-templates-vs-overlays:
+        name: Templates vs Overlays
     exercises/01-package-structure:
         name: Package Structure
     workshop-summary:

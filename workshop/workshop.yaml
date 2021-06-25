@@ -6,6 +6,6 @@ modules:
     - setup-environment
     - exercises/01-disconnected-install
     - exercices/02-using-carvel-tools
-    - exercices/03-package-structure
+    - exercices/03-templates-vs-overlays
     - exercises/01-package-structure
     - workshop-summary

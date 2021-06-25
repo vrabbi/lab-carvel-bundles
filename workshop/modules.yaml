@@ -11,7 +11,7 @@ modules:
         name: Using Carvel Tools
     exercises/03-templates-vs-overlays:
         name: Templates vs Overlays
-    exercises:04-directory-structure:
+    exercises/04-directory-structure:
         name: Directory Structure
     exercises/01-package-structure:
         name: Package Structure

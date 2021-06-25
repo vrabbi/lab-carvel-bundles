@@ -1,10 +1,10 @@
 #@ load("@ytt:data", "data")
 
 #@ pull_secrets = []
-#@ registry_hostname = data.values.imageRegistry.hostname
+#@ registry_host = data.values.imageRegistry.host
 #@ registry_username = data.values.imageRegistry.username
-#@ if registry_hostname and registry_username:
-#@ pull_secrets.append("{}-pull".format(registry_hostname))
+#@ if registry_host and registry_username:
+#@ pull_secrets.append("{}-pull".format(registry_host))
 #@ end
 
 apiVersion: training.eduk8s.io/v1alpha1

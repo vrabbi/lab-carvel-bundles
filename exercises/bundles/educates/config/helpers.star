@@ -16,10 +16,10 @@ def image_pull_policy(image):
   return always and "Always" or "IfNotPresent"
 end
 
-def docker_config_json(hostname, username, password):
+def docker_config_json(host, username, password):
   return json.encode({
     "auths": {
-      hostname: {
+      host: {
         "auth": base64.encode("{}:{}".format(username, password))
       }
     }

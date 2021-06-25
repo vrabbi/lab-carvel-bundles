@@ -3,7 +3,7 @@ the upstream deployment resources for Educates, as well as our own customized
 overlays and resources.
 
 ```terminal:execute
-command: |
+command: |-
   mkdir -p packages/educates
   mkdir -p packages/educates/bundle
   mkdir -p packages/educates/bundle/config

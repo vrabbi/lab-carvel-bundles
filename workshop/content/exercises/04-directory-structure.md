@@ -13,6 +13,18 @@ command: |
   mkdir -p packages/educates/bundle/config/upstream
 ```
 
+The result will be a directory structure looking like:
+
+```
+packages
+└── educates
+    └── bundle
+        └── config
+            ├── overlay
+            ├── resources
+            └── upstream
+```
+
 This may look elaborate, but there is a greater purpose with what we are
 trying to achieve with the Carvel tools, and this is the layout we need to
 use.

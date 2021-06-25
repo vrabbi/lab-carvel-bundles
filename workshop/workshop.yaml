@@ -5,5 +5,7 @@ modules:
     - workshop-overview
     - setup-environment
     - exercises/01-disconnected-install
+    - exercices/02-using-carvel-tools
+    - exercices/03-package-structure
     - exercises/01-package-structure
     - workshop-summary

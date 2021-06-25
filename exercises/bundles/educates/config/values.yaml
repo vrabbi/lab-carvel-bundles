@@ -19,6 +19,16 @@ ingressSecret:
   certificate: null
   privateKey: null
 
+#! Configuration for persistent volumes. The default storage class specified
+#! by the cluster will be used if not defined. Storage group may need to be
+#! set where a cluster has pod security policies enabled, usually setting it
+#! to one. Storage user and storage group can be set in exceptional case
+#! where storage class used maps to NFS storage and storage server requires
+#! specific user and group always be used.
+storageClass: null
+storageUser: null
+storageGroup: null
+
 #! Primary image registry where Educates container images are stored. It
 #! is only necessary to define hostname and credentials when that image
 #! registry requires authentication to access images. This principally

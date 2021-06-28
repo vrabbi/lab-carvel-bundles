@@ -25,8 +25,10 @@ modules:
         name: Additional Resources
     exercises/01-package-structure:
         name: Package Structure
-    exercises/10-application-deployment:
-        name: Application Deployment
+    exercises/10-deploying-resources:
+        name: Deploying Resources
+    exercises/11-supplying-data-values:
+        name: Supplying Data Values
     workshop-summary:
         name: Workshop Summary
         exit_sign: Finish Workshop

@@ -37,7 +37,7 @@ resources before applying them, it can do much more than that.
 To create the deployment using ``kapp``, run:
 
 ```terminal:execute
-command: ytt -f packages/educates/bundle/config -v ingressDomain={{ingress_domain}} | kapp deploy -a educates -f - -y
+command: ytt -f packages/educates/bundle/config | kapp deploy -a educates -f - -y
 ```
 
 You will see quite a bit of output from ``kapp`` as it validates and reorders

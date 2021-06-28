@@ -9,5 +9,8 @@ modules:
     - exercises/03-templates-vs-overlays
     - exercises/04-directory-structure
     - exercises/05-upstream-resources
+    - exercises/06-applying-overlays
+    - exercises/07-data-input-values
+    - exercises/08-functions-and-logic
     - exercises/01-package-structure
     - workshop-summary

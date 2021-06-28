@@ -12,11 +12,9 @@ Kubernetes resources which you can feed directory to Kubernetes using the
 ``kubectl apply`` command.
 
 In the case of the Educates package we are using as the subject of this
-workshop, it provides a set of raw resources which can be used as is to deploy
-a development version of the Educates operator, but also provides
+workshop it provides a set of raw resources, but also provides
 configuration resources for Kustomize, which uses overlays and resource
-generators, to create a final customized set of deployment resources for a
-production deployment.
+generators to create a final customized set of deployment resources.
 
 For this workshop we will be using the Carvel ``ytt`` tool. This tool embodies
 both the template features of Helm charts, and the abilities of Kustomize to

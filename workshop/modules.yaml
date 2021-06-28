@@ -15,6 +15,12 @@ modules:
         name: Directory Structure
     exercises/05-upstream-resources:
         name: Upstream Resources
+    exercises/06-applying-overlays:
+        name: Applying Overlays
+    exercises/07-data-input-values:
+        name: Data Input Values
+    exercises/08-functions-and-logic:
+        name: Functions and Logic
     exercises/01-package-structure:
         name: Package Structure
     workshop-summary:

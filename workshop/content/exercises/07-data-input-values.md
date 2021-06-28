@@ -9,8 +9,8 @@ Here we have already pre-defined all the data values that can be specified,
 including that for ``namespace``.
 
 ```editor:select-matching-text
-file: ~/exercises/packages/educates/bundle/config/overlay/operator-image.yaml
-text: "namespace = .*"
+file: ~/exercises/packages/educates/bundle/config/values.yaml
+text: "namespace: .*"
 isRegex: true
 ```
 

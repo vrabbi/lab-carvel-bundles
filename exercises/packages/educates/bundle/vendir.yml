@@ -11,5 +11,3 @@ directories:
         - resources/crds-v1/**/*
         - resources/operator/**/*
         - resources/image-mappings.env
-        excludePaths:
-        - resources/operator/namespace.yaml

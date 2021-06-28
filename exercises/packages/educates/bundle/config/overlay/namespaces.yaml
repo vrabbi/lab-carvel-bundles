@@ -1,6 +1,12 @@
 #@ load("@ytt:data", "data")
 #@ load("@ytt:overlay", "overlay")
 
+#@overlay/match by=overlay.subset({"kind":"Namespace", "metadata": {"name": "eduk8s"}})
+---
+metadata:
+  #@overlay/match missing_ok=True
+  name: #@ data.values.namespace
+
 #@overlay/match by=overlay.subset({"kind":"Deployment", "metadata": {"name": "eduk8s-operator"}})
 ---
 metadata:

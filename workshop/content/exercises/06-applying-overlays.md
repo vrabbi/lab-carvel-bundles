@@ -2,6 +2,9 @@ Since we want to be able to make changes to the original upstream resources
 for Educates, but not actually edit the files themselves, we use a feature
 of ``ytt`` called overlays to apply changes to them.
 
+Rather than create these as we go, this workshop already includes the overlays
+and other resources we need.
+
 Our first example of an overlay can be found in the file
 ``packages/educates/bundle/config/overlay/namespaces.yaml``.
 

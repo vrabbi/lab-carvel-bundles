@@ -36,8 +36,6 @@ directories:
         - resources/crds-v1/**/*
         - resources/operator/**/*
         - resources/image-mappings.env
-        excludePaths:
-        - resources/operator/namespace.yaml
 ```
 
 To have the specific version of the upstream resources downloaded to our
@@ -65,8 +63,4 @@ command: tree packages/educates/bundle/config/upstream
 ```
 
 Of the original files we can say exactly what we want to be copied through
-listing the files to include, or what to exclude.
-
-In this case we have included all the raw Kubernetes resources with the
-exception of that which was creating the namespace. We will cover why we
-don't include this one later.
+listing the files to include, or also what to exclude.

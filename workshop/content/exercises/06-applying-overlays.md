@@ -14,19 +14,14 @@ property of the resources is set to the namespace where we want to deploy
 the Educates operator. This includes the namespace of a service account
 when referenced in a role binding.
 
-An example from this overlay file is:
-
-```
-#@overlay/match by=overlay.subset({"kind":"Deployment", "metadata": {"name": "eduk8s-operator"}})
----
-metadata:
-  #@overlay/match missing_ok=True
-  namespace: #@ data.values.namespace
-```
-
 What you may notice though is that the namespace we want to use isn't itself
 defined in the overlay file. Instead you will see a reference to a data
 value called ``data.values.namespace``.
+
+```editor:select-matching-text
+file: ~/exercises/packages/educates/bundle/config/overlay/namespaces.yaml
+text: "data.values.namespace"
+```
 
 So in addition to the overlay feature of ``ytt``, we are also using its
 ability to support templates, where an overlay itself can be a template.

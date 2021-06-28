@@ -5,20 +5,13 @@ The source of the defaults for input values is the file
 file: ~/exercises/packages/educates/bundle/config/values.yaml
 ```
 
-Here we have already pre-defined all the data values that can be specified.
-For example:
+Here we have already pre-defined all the data values that can be specified,
+including that for ``namespace``.
 
-```
-#@data/values
----
-
-#! The namespace in which to deploy Educates.
-
-namespace: eduk8s
-
-#! DNS parent subdomain used for training portal and workshop ingresses.
-
-ingressDomain: workshops.example.com
+```editor:select-matching-text
+file: ~/exercises/packages/educates/bundle/config/overlay/operator-image.yaml
+text: "namespace = .*"
+isRegex: true
 ```
 
 As we will see later, the default values can be overridden when processing the

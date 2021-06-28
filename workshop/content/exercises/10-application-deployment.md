@@ -32,8 +32,9 @@ Carvel tool set to apply the resources to the cluster. This tool is called
 ``kapp``.
 
 Although ``kapp`` avoids our current problem, by doing some reordering of
-resources before applying them, it can do much more than that. We aren't
-going to really touch on what else ``kapp`` can do, so for now just run:
+resources before applying them, it can do much more than that.
+
+To create the deployment using ``kapp``, run:
 
 ```terminal:execute
 command: ytt -f packages/educates/bundle/config -v ingressDomain={{ingress_domain}} | kapp deploy -a educates -f - -y
@@ -49,9 +50,24 @@ deploying, run:
 command: kubectl rollout status deployment/eduk8s-operator -n eduk8s
 ```
 
-One aspect of ``kapp`` worth point out though is that it is able to track
+One aspect of ``kapp`` worth pointing out is that it is able to track
 what applications you have deployed using it. To see this, run:
 
 ```terminal:execute
 command: kapp list
+```
+
+This will show the list of applications you have deployed.
+
+You can then use ``kapp`` to inspect the set of resources created for an
+application:
+
+```terminal:execute
+command: kapp inspect -a educates
+```
+
+or shows logs for any pods created by the deployment.
+
+```terminal:execute
+command: kapp logs -a educates
 ```

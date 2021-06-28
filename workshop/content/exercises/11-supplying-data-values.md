@@ -31,15 +31,21 @@ command: ytt -f packages/educates/bundle/config -f educates-values.yaml > educat
 ```
 
 Note that the order of the options is important, with overrides for data
-values coming last.
+values needing to come last.
 
 Since in this case we output the processed resources to a file, we can use
 ``kapp`` to show us what the differences are, and verify we want to apply
 them, before updating the cluster.
 
 ```terminal:execute
-command: kapp deploy -f educates-resources.yaml --diff-changes
+command: kapp deploy -a educates -f educates-resources.yaml --diff-changes
 ```
 
 We were prompted in this case to confirm the changes as we didn't supply the
 ``-y`` option.
+
+Enter "y" to confirm that the changes should be applied to the cluster.
+
+```terminal:input
+text: y
+```

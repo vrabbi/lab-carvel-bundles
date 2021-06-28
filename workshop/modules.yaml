@@ -21,6 +21,8 @@ modules:
         name: Data Input Values
     exercises/08-functions-and-logic:
         name: Functions and Logic
+    exercices/09-additional-resources:
+        name: Additional Resources
     exercises/01-package-structure:
         name: Package Structure
     workshop-summary:

@@ -46,7 +46,7 @@ When it is finished, just to make sure the Educates operator has finished
 deploying, run:
 
 ```terminal:execute
-command: kubectl rollout status 
+command: kubectl rollout status deployment/eduk8s-operator -n eduk8s
 ```
 
 One aspect of ``kapp`` worth point out though is that it is able to track

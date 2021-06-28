@@ -11,9 +11,10 @@ file: ~/exercises/packages/educates/bundle/config/overlay/namespaces.yaml
 
 In this case what is occuring is that we are ensuring that the ``namespace``
 property of the resources is set to the namespace where we want to deploy
-the Educates operator.
+the Educates operator. This includes the namespace of a service account
+when referenced in a role binding.
 
-As example from this overlay file is:
+An example from this overlay file is:
 
 ```
 #@overlay/match by=overlay.subset({"kind":"Deployment", "metadata": {"name": "eduk8s-operator"}})

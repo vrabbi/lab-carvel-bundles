@@ -16,5 +16,5 @@ spec:
       #@ pull_secrets = image_pull_secrets()
       #@ if pull_secrets:
       #@overlay/match missing_ok=True
-      imagePullSecrets: #@ [{"name": name} for name in image_pull_secrets()]
+      imagePullSecrets: #@ [{"name": name} for name in pull_secrets]
       #@ end

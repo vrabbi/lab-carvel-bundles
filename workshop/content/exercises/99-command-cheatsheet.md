@@ -12,10 +12,6 @@ command: imgpkg pull -b {{registry_host}}/educates-copy:21.05.10.1 -o educates-c
 ```
 
 ```terminal:execute
-command: kubectl create ns eduk8s
-```
-
-```terminal:execute
 command: |
   ytt -f educates-copy/config -v ingressDomain={{ingress_domain}} \
     -v imageRegistry.host=$REGISTRY_HOST \

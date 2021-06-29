@@ -13,18 +13,16 @@ command: ytt -f packages/educates/bundle/config -v ingressDomain={{ingress_domai
 or you can create a separate values file with any overrides in it, and pass
 the name of that as an option.
 
-To create a separate values file run:
-
-```execute
-cat > educates-values.yaml << EOF
-#@data/values
----
-
-ingressDomain: {{ingress_domain}}
-EOF
+```editor:append-lines-to-file
+file: ~/exercises/educates-values.yaml
+text: |
+  #@data/values
+  ---
+  ingressDomain: {{ingress_domain}}
 ```
 
-Then generate the resources using:
+Ensure the data values file has been saved and then generate the resources
+using:
 
 ```terminal:execute
 command: ytt -f packages/educates/bundle/config -f educates-values.yaml > educates-resources.yaml

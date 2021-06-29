@@ -17,5 +17,5 @@ modules:
     - exercises/11-supplying-data-values
     - exercises/12-resolving-images
     - exercises/13-images-lock-file
-    - exercises/01-package-structure
+    - exercises/99-command-cheatsheet
     - workshop-summary

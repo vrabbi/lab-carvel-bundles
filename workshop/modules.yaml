@@ -33,6 +33,8 @@ modules:
         name: Resolving Images
     exercises/13-images-lock-file:
         name: Images Lock File
+    exercises/99-command-cheatsheet:
+        name: Command Cheatsheet
     workshop-summary:
         name: Workshop Summary
         exit_sign: Finish Workshop

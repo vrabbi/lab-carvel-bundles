@@ -1,14 +1,3 @@
-```terminal:execute
-command: tree bundles
-```
-
-```terminal:execute
-command: (cd packages/educates/bundle; vendir sync)
-```
-
-```terminal:execute
-command: (cd packages/educates/bundle; kbld -f config --imgpkg-lock-output .imgpkg/images.yml)
-```
 
 ```terminal:execute
 command: imgpkg push -b {{registry_host}}/educates:21.05.10.1 -f packages/educates/bundle
@@ -20,10 +9,6 @@ command: imgpkg copy -b {{registry_host}}/educates:21.05.10.1 --to-repo {{regist
 
 ```terminal:execute
 command: imgpkg pull -b {{registry_host}}/educates-copy:21.05.10.1 -o educates-copy
-```
-
-```terminal:execute
-command: kubectl apply -f https://github.com/vmware-tanzu/carvel-kapp-controller/releases/download/v0.19.0/release.yml
 ```
 
 ```terminal:execute

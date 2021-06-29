@@ -21,22 +21,26 @@ registry with the same tag.
 Best practice is to resolve image references and rewrite them to include the
 hash reference value instead of the tag. Manually calculating the hash
 reference value for images is tedious, but this is where the ``kbld`` tool can
-help out.
+also help out.
 
-Using ``kbld``, we can run:
+Run ``ytt`` again to process the deployment resources, with our data values,
+but this time pipe the output into ``kbld``.
 
 ```terminal:execute
-command: (cd packages/educates/bundle; kbld -f config --imgpkg-lock-output .imgpkg/images.yml)
+command: ytt -f packages/educates/bundle/config -f educates-values.yaml | kbld -f - > educates-resources.yaml
 ```
 
-which will output the file ``packages/educates/bundle/.imgpkg/values.yml``.
+This time when we use ``kapp`` to update the deployment:
 
-```editor:open-file
-file: ~/exercises/packages/educates/bundle/.imgpkg/values.yml
+```terminal:execute
+command: kapp deploy -a educates -f educates-resources.yaml --diff-changes
 ```
 
-This generated file contains a mapping from the original image reference
-to one which includes the hash reference value instead of the original image
-tag. It calculates the hash reference value by querying the image registries
-where the image are hosted, obtaining the image manifest and extracting the
-hash reference value for the image.
+You will see that ``kbld`` has rewritten the image references for us to use
+hash reference value instead of the original tag.
+
+Enter "y" to confirm that the changes should be applied to the cluster.
+
+```terminal:input
+text: y
+```

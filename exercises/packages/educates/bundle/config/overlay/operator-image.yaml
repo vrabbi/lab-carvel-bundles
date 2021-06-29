@@ -1,20 +1,20 @@
-#! #@ load("@ytt:data", "data")
-#! #@ load("@ytt:overlay", "overlay")
-#! #@ load("/helpers.star", "image_reference", "image_pull_policy", "image_pull_secrets")
-#! 
-#! #@overlay/match by=overlay.subset({"kind":"Deployment", "metadata": {"name": "eduk8s-operator"}})
-#! ---
-#! spec:
-#!   template:
-#!     spec:
-#!       containers:
-#!       #@overlay/match by="name"
-#!       - name: eduk8s
-#!         #@ image = image_reference("system-operator")
-#!         image: #@ image
-#!         imagePullPolicy: #@ image_pull_policy(image)
-#!       #@ pull_secrets = image_pull_secrets()
-#!       #@ if pull_secrets:
-#!       #@overlay/match missing_ok=True
-#!       imagePullSecrets: #@ [{"name": name} for name in pull_secrets]
-#!       #@ end
+#@ load("@ytt:data", "data")
+#@ load("@ytt:overlay", "overlay")
+#@ load("/helpers.star", "image_reference", "image_pull_policy", "image_pull_secrets")
+
+#@overlay/match by=overlay.subset({"kind":"Deployment", "metadata": {"name": "eduk8s-operator"}})
+---
+spec:
+  template:
+    spec:
+      #! containers:
+      #! #@overlay/match by="name"
+      #! - name: eduk8s
+      #!   #@ image = image_reference("system-operator")
+      #!   image: #@ image
+      #!   imagePullPolicy: #@ image_pull_policy(image)
+      #@ pull_secrets = image_pull_secrets()
+      #@ if pull_secrets:
+      #@overlay/match missing_ok=True
+      imagePullSecrets: #@ [{"name": name} for name in pull_secrets]
+      #@ end

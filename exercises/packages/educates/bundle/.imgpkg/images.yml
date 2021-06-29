@@ -11,11 +11,8 @@ images:
     kbld.carvel.dev/id: quay.io/eduk8s/conda-environment:210508.022321.98b76aa
   image: quay.io/eduk8s/conda-environment@sha256:321d175c672d15507fcad523450f4bd2b570f77302d99480941ce77acb626fc1
 - annotations:
-    kbld.carvel.dev/id: quay.io/eduk8s/eduk8s-operator:210508.025026.38e63af
-  image: quay.io/eduk8s/eduk8s-operator@sha256:f27924516b0242a63c307dc939fb8ee3b161d9fc9315d98b703ef3ba54c5e4e7
-- annotations:
     kbld.carvel.dev/id: quay.io/eduk8s/eduk8s-operator:develop
-  image: quay.io/eduk8s/eduk8s-operator@sha256:c9012612c7f1152c0db9d63241e5a0b7a7e64b5c35422c157fe55ffae4d5f484
+  image: quay.io/eduk8s/eduk8s-operator@sha256:f27924516b0242a63c307dc939fb8ee3b161d9fc9315d98b703ef3ba54c5e4e7
 - annotations:
     kbld.carvel.dev/id: quay.io/eduk8s/eduk8s-portal:210429.013717.d89e4b8
   image: quay.io/eduk8s/eduk8s-portal@sha256:a1be78466b1b03e808b2f8837a7d5ae7c6bada500df00d22dbc585b6cc12e138

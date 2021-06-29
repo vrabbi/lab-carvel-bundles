@@ -62,8 +62,9 @@ imageRegistry:
 #!   https://github.com/eduk8s/eduk8s-operator/issues/112
 
 imageVersions:
-- name: system-operator
-  image: quay.io/eduk8s/eduk8s-operator:210508.025026.38e63af
+#! Set system-operator through kbld overrides instead.
+#! - name: system-operator
+#!   image: quay.io/eduk8s/eduk8s-operator:210508.025026.38e63af
 - name: training-portal
   image: quay.io/eduk8s/eduk8s-portal:210429.013717.d89e4b8
 #! - name: docker-registry

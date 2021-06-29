@@ -1,3 +1,6 @@
+```terminal:execute
+command: kapp delete -a educates
+```
 
 ```terminal:execute
 command: imgpkg push -b {{registry_host}}/educates:21.05.10.1 -f packages/educates/bundle

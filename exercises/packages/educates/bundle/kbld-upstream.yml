@@ -2,7 +2,6 @@
 apiVersion: kbld.k14s.io/v1alpha1
 kind: Config
 minimumRequiredVersion: 0.15.0
-searchRules:
-- valueMatcher:
-    imageRepo: quay.io/eduk8s/eduk8s-operator:develop
-  updateStrategy: none
+overrides:
+- image: quay.io/eduk8s/eduk8s-operator:develop
+  newImage: quay.io/eduk8s/eduk8s-operator:210508.025026.38e63af

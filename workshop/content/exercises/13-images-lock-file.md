@@ -14,7 +14,7 @@ required into a file for later use.
 Once again ``kbld`` can help out with this by running the command:
 
 ```terminal:execute
-command: (cd packages/educates/bundle; kbld -f packages/educates/bundle/kbld-upstream.yml -f config --imgpkg-lock-output .imgpkg/images.yml)
+command: (cd packages/educates/bundle; kbld -f kbld-upstream.yml -f config --imgpkg-lock-output .imgpkg/images.yml)
 ```
 
 which will output what is called an images lock file. In this case saved as

@@ -29,6 +29,8 @@ modules:
         name: Deploying Resources
     exercises/11-supplying-data-values:
         name: Supplying Data Values
+    exercises/12-resolving-images:
+        name: Resolving Images
     workshop-summary:
         name: Workshop Summary
         exit_sign: Finish Workshop

@@ -15,5 +15,6 @@ modules:
     - exercises/09-additional-resources
     - exercises/10-deploying-resources
     - exercises/11-supplying-data-values
+    - exercises/12-resolving-images
     - exercises/01-package-structure
     - workshop-summary

@@ -45,16 +45,16 @@ local directory we can then run:
 command: (cd packages/educates/bundle; vendir sync)
 ```
 
-It is a bit annoying that you have to change into the directory where the
-``vendir.yml`` file is located in order to run ``vendir``. It would be more
-friendly if it accepted a command line option to say what directory it should
-run in. If you agree, then consider voting on the [feature
+> Note: It is a bit annoying that you have to change into the directory where
+the ``vendir.yml`` file is located in order to run ``vendir``. It would be
+more friendly if it accepted a command line option to say what directory it
+should run in. If you agree, then consider voting on the [feature
 request](https://github.com/vmware-tanzu/carvel-vendir/issues/75) which was
-submitted about the issue. Another useful feature may be an option to say
-run recursively. That is, from the current directory or a specified directory,
-recursively look for any sub directories with a ``vendir.yml`` and run in
-that directory. This would be useful where you are having to copy down files
-from many packages.
+submitted about the issue. Another useful feature may be an option to say run
+recursively. That is, from the current directory or a specified directory,
+recursively look for any sub directories with a ``vendir.yml`` and run in that
+directory. This would be useful where you are having to copy down files from
+many packages.
 
 In our example, the list of files copied down can be seen by running:
 

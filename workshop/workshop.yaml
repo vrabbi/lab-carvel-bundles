@@ -16,5 +16,6 @@ modules:
     - exercises/10-deploying-resources
     - exercises/11-supplying-data-values
     - exercises/12-resolving-images
+    - exercises/13-images-lock-file
     - exercises/01-package-structure
     - workshop-summary

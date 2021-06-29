@@ -31,6 +31,8 @@ modules:
         name: Supplying Data Values
     exercises/12-resolving-images:
         name: Resolving Images
+    exercises/13-images-lock-file:
+        name: Images Lock File
     workshop-summary:
         name: Workshop Summary
         exit_sign: Finish Workshop

@@ -37,10 +37,21 @@ command: kapp deploy -a educates -f educates-resources.yaml --diff-changes
 ```
 
 You will see that ``kbld`` has rewritten the image references for us to use
-hash reference value instead of the original tag.
+hash reference values instead of the original tag. It calculates the hash
+reference value by querying the image registries where the image are hosted,
+obtaining the image manifest and extracting the hash reference value for the
+image.
 
 Enter "y" to confirm that the changes should be applied to the cluster.
 
 ```terminal:input
 text: y
 ```
+
+What we have now represents the typical workflow for using the Carvel tools
+to configure and deploy an application. Namely:
+
+* Define a file with our data values to override any defaults.
+* Use ``ytt`` to process the deployment resources, supplying our data values.
+* Send the output from ``ytt`` through ``kbld`` to resolve image references.
+* Run ``kapp`` to apply the resources to the Kubernetes cluster.  

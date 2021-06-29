@@ -36,7 +36,7 @@ command: |
     -v imageRegistry.host=$REGISTRY_HOST \
     -v imageRegistry.username=$REGISTRY_USERNAME \
     -v imageRegistry.password=$REGISTRY_PASSWORD | \
-    kbld -f educates-copy/kbld.yml -f educates-copy/.imgpkg/images.yml -f - | \
+    kbld -f educates-copy/kbld-bundle.yml -f educates-copy/.imgpkg/images.yml -f - | \
     kapp deploy -a educates -f - -y
 ```
 

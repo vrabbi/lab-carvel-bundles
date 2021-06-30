@@ -17,7 +17,7 @@ So imagining for a moment that we didn't already have the configuration
 locally already, to download the configuration bundle run:
 
 ```terminal:execute
-command: imgpkg pull -b {{registry_host}}/educates-copy:21.05.10.1 -o educates-public
+command: imgpkg pull -b {{registry_host}}/educates:21.05.10.1 -o educates-public
 ```
 
 In this case we are naming the download directory ``educates-public``. The
@@ -45,16 +45,16 @@ command: kapp delete -a educates -y
 You will see here one of the other benefits of using ``kapp``. Because
 ``kapp`` tracks what resources it created, it is able to delete the
 application without needing to have access to the original configuration
-files, albeit this was possible in this case as it was self contained and
-didn't require a separate step to create the namespace it used as a separate
-step.
+files. This was possible in this case as it was self contained and didn't
+require a separate step to create the namespace it used, so it wasn't
+necessary to delete it as an extra step.
 
-Once the original Educates deployment has to deleted, re-deploy it again,
+Once the original Educates deployment has been deleted, re-deploy it again,
 this time using the command:
 
 ```terminal:execute
 command: |
-  ytt -f educates-copy/config -v ingressDomain={{ingress_domain}} \
-    kbld -f educates-copy/kbld-bundle.yml -f educates-copy/.imgpkg/images.yml -f - | \
+  ytt -f educates-public/config -v ingressDomain={{ingress_domain}} | \
+    kbld -f educates-public/kbld-bundle.yml -f educates-public/.imgpkg/images.yml -f - | \
     kapp deploy -a educates -f - -y
 ```

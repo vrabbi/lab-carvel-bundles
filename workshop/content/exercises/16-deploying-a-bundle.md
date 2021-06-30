@@ -54,7 +54,9 @@ this time using the command:
 
 ```terminal:execute
 command: |
-  ytt -f educates-public/config -v ingressDomain={{ingress_domain}} | \
-    kbld -f educates-public/kbld-bundle.yml -f educates-public/.imgpkg/images.yml -f - | \
-    kapp deploy -a educates -f - -y
+  ytt -f educates-public/config -f educates-values.yaml | \
+    kbld -f - | kapp deploy -a educates -f - -y
 ```
+
+Since the configuration and resources are the still the same, the same
+sequence of commands and options for ``ytt``, ``kbld`` and ``kapp`` will work.

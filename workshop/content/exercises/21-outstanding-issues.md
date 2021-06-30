@@ -7,7 +7,7 @@ to improve the deployment experience for Educates.
 Topics which will be covered later will include:
 
 * Using the upcoming package bundling and installation APIs provided by
-  ``kapp-controller``.
+  ``kapp-controller`` from the Carvel tools.
 
 * Exploration of how bundles could be used to package up Educates workshops,
   including the workshop content, custom workshop base images, or images

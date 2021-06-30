@@ -21,7 +21,7 @@ def image_pull_secrets():
   registry_host = data.values.imageRegistry.host
   registry_username = data.values.imageRegistry.username
   if registry_host and registry_username:
-    pull_secrets.append("{}-pull".format(registry_host))
+    pull_secrets.append("eduk8s-image-registry-pull")
   end
   return pull_secrets
 end

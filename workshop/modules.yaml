@@ -45,8 +45,8 @@ modules:
         name: Private Network
     exercises/19-kubernetes-operators:
         name: Kubernetes Operators
-    exercises/99-command-cheatsheet:
-        name: Command Cheatsheet
+    exercises/20-registry-credentials:
+        name: Registry Credentials
     workshop-summary:
         name: Workshop Summary
         exit_sign: Finish Workshop

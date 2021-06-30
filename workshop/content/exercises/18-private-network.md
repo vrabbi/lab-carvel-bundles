@@ -37,7 +37,7 @@ bundle. The new command is:
 
 ```terminal:execute
 command: |
-  ytt -f educates-private/config -v ingressDomain={{ingress_domain}} \
+  ytt -f educates-private/config -f educates-values.yaml \
     -v imageRegistry.host=$REGISTRY_HOST \
     -v imageRegistry.username=$REGISTRY_USERNAME \
     -v imageRegistry.password=$REGISTRY_PASSWORD | \
@@ -48,8 +48,9 @@ command: |
 The important difference to note at this point is the ``-f
 educates-private/.imgpkg/images.yml`` option passed to ``kbld``. This tells
 ``kbld`` that rather than resolving image references based on what was in the
-deployment resources, to remap the image references to the local copies of the
-images stored in the private image registry.
+deployment resources, to remap the image references based on what exists in
+the rewritten images lock file, to the local copies of the images stored in
+the private image registry.
 
 There are a couple of other differences with the command as well, which we
 will cover next.

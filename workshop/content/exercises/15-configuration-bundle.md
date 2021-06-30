@@ -1,5 +1,5 @@
 Now that we have an image lock file which includes a list of images with the
-resolved hash reference for the image, we are ready for the next step, which
+resolved hash references for the images, we are ready for the next step, which
 is to create a bundle containing the configuration for the application.
 
 Bundles are a bit different to what you may be used to as they aren't just a

@@ -19,5 +19,6 @@ modules:
     - exercises/13-images-lock-file
     - exercises/14-images-configuration
     - exercises/15-configuration-bundle
+    - exercises/16-deploying-a-bundle
     - exercises/99-command-cheatsheet
     - workshop-summary

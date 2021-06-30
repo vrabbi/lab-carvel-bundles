@@ -19,6 +19,10 @@ the copy we made.
 command: imgpkg pull -b {{registry_host}}/educates-private:21.05.10.1 -o educates-private
 ```
 
+The name of the directory this time is ``educates-private``. The ``-private``
+suffix is to highlight that this bundle is for use in the private network of
+the disconnected environment.
+
 This version is the same as before with the exception of one file, which is
 the images lock file.
 

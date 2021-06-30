@@ -10,7 +10,7 @@ In order to now install the application using the configuration bundle, rather
 than the normal sort of situation where you may download a tarball with
 configuration from a web site, check out a git repository, or even deploy
 using a single resource file pulled from a web site, with a configuration
-bundle you first need to copy the bundle from the image registry to your local
+bundle you first need to pull the bundle from the image registry to your local
 file system.
 
 So imagining for a moment that we didn't already have the configuration

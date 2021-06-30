@@ -8,7 +8,7 @@ the resources have to be constructed from the ground up as templates specific
 to the Helm templating tool.
 
 In the case of raw Kubernetes resources, they are just that, unmodified
-Kubernetes resources which you can feed directory to Kubernetes using the
+Kubernetes resources which you can feed directly to Kubernetes using the
 ``kubectl apply`` command.
 
 In the case of the Educates package we are using as the subject of this

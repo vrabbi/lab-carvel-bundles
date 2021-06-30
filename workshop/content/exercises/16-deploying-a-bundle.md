@@ -35,7 +35,7 @@ You will see that the structure and the files in it are the same as what were
 in the original ``packages/educates/bundle`` directory the configuration
 bundle was created from.
 
-Before we can deploy Educates using the download bundle, we first need to
+Before we can deploy Educates using the downloaded bundle, we first need to
 delete the existing deployment. This can be done by running:
 
 ```terminal:execute

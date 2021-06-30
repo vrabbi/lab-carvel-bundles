@@ -41,6 +41,8 @@ modules:
         name: Deploying a Bundle
     exercises/17-relocating-a-bundle:
         name: Relocating a Bundle
+    exercises/18-private-network:
+        name: Private Network
     exercises/99-command-cheatsheet:
         name: Command Cheatsheet
     workshop-summary:

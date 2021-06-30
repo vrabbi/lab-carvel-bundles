@@ -18,5 +18,6 @@ modules:
     - exercises/12-resolving-images
     - exercises/13-images-lock-file
     - exercises/14-images-configuration
+    - exercises/15-configuration-bundle
     - exercises/99-command-cheatsheet
     - workshop-summary

@@ -35,6 +35,8 @@ modules:
         name: Images Lock File
     exercises/14-images-configuration:
         name: Images Configuration
+    exercises/15-configuration-bundle:
+        name: Configuration Bundle
     exercises/99-command-cheatsheet:
         name: Command Cheatsheet
     workshop-summary:

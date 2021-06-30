@@ -7,12 +7,14 @@
 spec:
   template:
     spec:
-      #! containers:
-      #! #@overlay/match by="name"
-      #! - name: eduk8s
-      #!   #@ image = image_reference("system-operator")
-      #!   image: #@ image
-      #!   imagePullPolicy: #@ image_pull_policy(image)
+      #@ if data.values.operatorImage:
+      containers:
+      #@overlay/match by="name"
+      - name: eduk8s
+        #@ image = data.values.operatorImage
+        image: #@ image
+        imagePullPolicy: #@ image_pull_policy(image)
+      #@ end
       #@ pull_secrets = image_pull_secrets()
       #@ if pull_secrets:
       #@overlay/match missing_ok=True

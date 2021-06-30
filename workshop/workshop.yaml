@@ -20,5 +20,6 @@ modules:
     - exercises/14-images-configuration
     - exercises/15-configuration-bundle
     - exercises/16-deploying-a-bundle
+    - exercises/17-relocating-a-bundle
     - exercises/99-command-cheatsheet
     - workshop-summary

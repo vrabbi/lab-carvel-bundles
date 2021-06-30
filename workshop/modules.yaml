@@ -39,6 +39,8 @@ modules:
         name: Configuration Bundle
     exercises/16-deploying-a-bundle:
         name: Deploying a Bundle
+    exercises/17-relocating-a-bundle:
+        name: Relocating a Bundle
     exercises/99-command-cheatsheet:
         name: Command Cheatsheet
     workshop-summary:

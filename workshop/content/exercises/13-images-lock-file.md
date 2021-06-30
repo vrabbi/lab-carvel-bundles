@@ -39,7 +39,3 @@ pickup all possible uses of images in the deployment resources. By using the
 processed output this may not be the case as conditional flags may mean that
 in any one configuration set by the data values not all images may be used in
 the final deployment resources.
-
-Using the unprocessed files can add some complications, which is why the
-``-f kbld-upstream.yml`` option is used above. We will revisit what that
-configuration file is for later.

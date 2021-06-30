@@ -17,7 +17,7 @@ Python intended for use as a configuration language.
 As well as being able to be used to embed programmatic logic into the
 resources, it is possible to create your own libraries of helper functions
 and make callouts to these functions. This is what is occuring with the
-``image_pull_secrets()`` call in overlay.
+``image_pull_secrets()`` call in the overlay.
 
 ```editor:select-matching-text
 file: ~/exercises/packages/educates/bundle/config/overlay/operator-image.yaml

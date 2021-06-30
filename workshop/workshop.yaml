@@ -22,5 +22,6 @@ modules:
     - exercises/16-deploying-a-bundle
     - exercises/17-relocating-a-bundle
     - exercises/18-private-network
+    - exercises/19-kubernetes-operators
     - exercises/99-command-cheatsheet
     - workshop-summary

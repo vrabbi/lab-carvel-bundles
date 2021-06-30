@@ -4,8 +4,8 @@ in which you may need to do this.
 
 The first is that you may need to override what versions of images are used
 when the upstream resources are to be applied. In the case of the Educates
-operator this is necessary as the upstream resources use the ":develop" tag on
-the operator container image. This wasn't a specific version as usually the
+operator this is necessary as the upstream resources use the ``develop`` tag
+on the operator container image. This wasn't a specific version as usually the
 Kustomize configuration it provides would override that with the actual
 version of the image to use.
 
@@ -28,8 +28,8 @@ after: 2
 The second situation where you may need to use configuration to customize what
 ``kbld`` does is when non standard fields within the resources actually have
 values that refer to images. That is, by default it will only look for fields
-with name ``image`` as indicating an image reference. We don't use the ability
-here, but we will need it later on.
+with name ``image`` as indicating an image reference. We don't use this
+ability here, but we will need it later on.
 
 Note that although we use the overrides section to change what version of the
 image is used, the image lock file still shows the original version of the

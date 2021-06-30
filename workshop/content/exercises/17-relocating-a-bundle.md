@@ -39,3 +39,6 @@ tarball it can then be copied by whatever means necessary to get it onto the
 private network. The ``imgpkg`` command can then be used to copy the tarball
 from the local file system up to the internal image registry just as if it had
 been copied across directly.
+
+As copying all the container images may take a little while, wait for the
+copy to finish before continuing.

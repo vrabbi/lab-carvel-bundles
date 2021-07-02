@@ -1,0 +1,11 @@
+apiVersion: kapp.k14s.io/v1alpha1
+kind: Config
+diffAgainstLastAppliedFieldExclusionRules:
+- path: [metadata, annotations, "kopf.zalando.org/last-handled-configuration"]
+  resourceMatchers:
+  - apiVersionKindMatcher: {apiVersion: training.eduk8s.io/v1alpha1, kind: TrainingPortal}
+  - apiVersionKindMatcher: {apiVersion: training.eduk8s.io/v1alpha2, kind: Workshop}
+  - apiVersionKindMatcher: {apiVersion: training.eduk8s.io/v1alpha1, kind: WorkshopSession}
+  - apiVersionKindMatcher: {apiVersion: training.eduk8s.io/v1alpha1, kind: WorkshopEnvironment}
+  - apiVersionKindMatcher: {apiVersion: training.eduk8s.io/v1alpha1, kind: WorkshopRequest}
+  - apiVersionKindMatcher: {apiVersion: training.eduk8s.io/v1alpha1, kind: SystemProfile}

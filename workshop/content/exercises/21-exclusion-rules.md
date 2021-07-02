@@ -27,7 +27,7 @@ Adding exclusion rules for these fields was necessary as they are special
 fields which are injected by the Educates operator, or more precisely by
 the operator framework it uses. As these fields represent state information
 and are updated after any change to the custom resource, they would always
-show as changing each time a change has made but aren't actually relevant
+show as changing each time a change was made but aren't actually relevant
 in the context of any changes we would make, being an internal detail of
 how the operator functions.
 

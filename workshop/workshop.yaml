@@ -24,5 +24,6 @@ modules:
     - exercises/18-private-network
     - exercises/19-kubernetes-operators
     - exercises/20-registry-credentials
+    - exercises/21-exclusion-rules
     - exercises/99-outstanding-issues
     - workshop-summary

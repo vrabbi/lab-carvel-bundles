@@ -6,9 +6,6 @@ to improve the deployment experience for Educates.
 
 Topics which will be covered later will include:
 
-* Add ``kapp`` configuration file to suppress diff messages on annotations
-  related to the ``kopf`` operator framework used by the Educates operator.
-
 * Using the upcoming package bundling and installation APIs provided by
   ``kapp-controller`` from the Carvel tools.
 

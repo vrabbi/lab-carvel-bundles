@@ -47,6 +47,8 @@ modules:
         name: Kubernetes Operators
     exercises/20-registry-credentials:
         name: Registry Credentials
+    exercises/21-exclusion-rules:
+        name: Exclusion Rules
     exercises/99-outstanding-issues:
         name: Outstanding Issues
     workshop-summary:

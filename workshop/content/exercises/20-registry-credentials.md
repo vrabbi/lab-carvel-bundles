@@ -56,3 +56,5 @@ With that all in place, and since for this workshop session the image registry
 requires authentication, this is why when deploying Educates using the
 relocated image bundle that the image registry host, username and password
 were supplied as data values when running ``ytt`` in this latest deployment.
+You would also have seen in the comparison when reviewing the changes the
+pull secret being added, along with deployments update to use it.

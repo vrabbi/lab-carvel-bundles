@@ -40,7 +40,7 @@ image references which appear against an ``image`` field in any resources.
 
 Configuration for ``kbld`` to change this behaviour is why the option
 ``-f educates-private/kbld-bundle.yml`` supplied to ``kbld`` with this latest
-deployment is used.
+deployment is used, with the configuration contained in the file being:
 
 ```editor:select-matching-text
 file: ~/exercises/packages/educates/bundle/kbld-bundle.yml

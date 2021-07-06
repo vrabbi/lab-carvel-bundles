@@ -3,7 +3,7 @@ kind: Workshop
 metadata:
   name: lab-carvel-bundles
 spec:
-  title: Package Testing
+  title: Carvel Bundles
   description: Workshop exploring Carvel packaging.
   url: https://github.com/failk8s/lab-carvel-bundles
   content:

@@ -1,4 +1,4 @@
-LAB - Package Testing
-=====================
+LAB - Carvel Bundles
+====================
 
-Workshop exploring Carvel packages.
+Workshop exploring Carvel packaging.

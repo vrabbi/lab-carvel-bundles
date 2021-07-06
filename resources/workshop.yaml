@@ -1,13 +1,13 @@
 apiVersion: training.eduk8s.io/v1alpha2
 kind: Workshop
 metadata:
-  name: lab-package-testing
+  name: lab-carvel-bundles
 spec:
   title: Package Testing
-  description: Workshop exploring Carvel packages.
-  url: https://github.com/failk8s/lab-package-testing
+  description: Workshop exploring Carvel packaging.
+  url: https://github.com/failk8s/lab-carvel-bundles
   content:
-    files: github.com/failk8s/lab-package-testing
+    files: github.com/failk8s/lab-carvel-bundles
   session:
     namespaces:
       budget: small

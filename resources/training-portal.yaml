@@ -1,14 +1,14 @@
 apiVersion: training.eduk8s.io/v1alpha1
 kind: TrainingPortal
 metadata:
-  name: lab-package-testing
+  name: lab-carvel-bundles
 spec:
   portal:
     password: carvel
     registration:
       type: anonymous
   workshops:
-  - name: lab-package-testing
+  - name: lab-carvel-bundles
     capacity: 1
     expires: 120m
     orphaned: 15m

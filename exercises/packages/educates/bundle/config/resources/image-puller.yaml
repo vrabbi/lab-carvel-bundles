@@ -16,6 +16,8 @@ spec:
       labels:
         app: educates-prepull
     spec:
+      securityContext:
+        runAsUser: 1
       initContainers:
       #@ images = data.values.imageVersions
       #@ prepull = data.values.prepullImages

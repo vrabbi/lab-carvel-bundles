@@ -5,19 +5,14 @@ metadata:
 spec:
   title: Carvel Bundles
   description: Workshop exploring Carvel packaging.
-  url: https://github.com/failk8s/lab-carvel-bundles
+  url: https://github.com/vrabbi/lab-carvel-bundles
   content:
-    files: github.com/failk8s/lab-carvel-bundles
+    files: github.com/vrabbi/lab-carvel-bundles
   session:
     namespaces:
       budget: small
       secondary:
       - name: $(session_namespace)-vc
-        # Role doesn't exist so will have effect of no access being
-        # granted to the namespace for the session used. Need to set
-        # something else Educates doesn't have a way of saying don't
-        # give access and needs a "custom" role indicator.
-        #   https://github.com/eduk8s/eduk8s-operator/issues/110
         role: non-existent-role
         budget: custom
     applications:
@@ -97,27 +92,23 @@ spec:
         - kind: ServiceAccount
           namespace: $(workshop_namespace)
           name: $(service_account)
-    # The anyuid security policy within Educates doesn't allow binding of
-    # service ports when it should, so need to define our own security policy.
-    #    https://github.com/eduk8s/eduk8s-operator/issues/109
-    # The security policy was set to "custom" to allow taking control.
-    # - kind: RoleBinding
-    #   apiVersion: rbac.authorization.k8s.io/v1
-    #   metadata:
-    #     name: vcluster-anyuid
-    #     namespace: $(session_namespace)-vc
-    #   roleRef:
-    #     apiGroup: rbac.authorization.k8s.io
-    #     kind: ClusterRole
-    #     name: $(workshop_namespace)-anyuid
-    #   subjects:
-    #     - kind: ServiceAccount
-    #       namespace: $(session_namespace)-vc
-    #       name: vcluster
+    - kind: RoleBinding
+      apiVersion: rbac.authorization.k8s.io/v1
+      metadata:
+        name: vcluster-anyuid-1
+        namespace: $(session_namespace)-vc
+      roleRef:
+        apiGroup: rbac.authorization.k8s.io
+        kind: ClusterRole
+        name: $(workshop_namespace)-anyuid
+      subjects:
+        - kind: ServiceAccount
+          namespace: $(session_namespace)-vc
+          name: vcluster
     - apiVersion: rbac.authorization.k8s.io/v1
       kind: RoleBinding
       metadata:
-        name: vcluster-anyuid
+        name: vcluster-anyuid-2
         namespace: $(session_namespace)-vc
       roleRef:
         apiGroup: rbac.authorization.k8s.io
@@ -130,45 +121,6 @@ spec:
       - kind: ServiceAccount
         namespace: $(session_namespace)-vc
         name: default
-    # Can't define a custom resource quota due to bug in Educates operator.
-    #     https://github.com/eduk8s/eduk8s-operator/issues/108
-    # Since budget was set to "custom" to remove limit ranges, means that
-    # there is currently now cap on how much resources someone can use in
-    # the virtual cluster.
-    # - kind: ResourceQuota
-    #   apiVersion: v1
-    #   metadata:
-    #     name: compute-resources
-    #     namespace: $(session_namespace)-vc
-    #   spec:
-    #     hard:
-    #       limits.cpu: '4'
-    #       limits.memory: 4Gi
-    #     scopes:
-    #     - NotTerminating
-    # - kind: ResourceQuota
-    #   apiVersion: v1
-    #   metadata:
-    #     name: compute-resources-timebound
-    #     namespace: $(session_namespace)-vc
-    #   spec:
-    #     hard:
-    #       limits.cpu: '4'
-    #       limits.memory: 4Gi
-    #     scopes:
-    #     - Terminating
-    # - kind: ResourceQuota
-    #   apiVersion: v1
-    #   metadata:
-    #     name: object-counts
-    #     namespace: $(session_namespace)-vc
-    #   spec:
-    #     hard:
-    #       persistentvolumeclaims: '12'
-    #       replicationcontrollers: '25'
-    #       replicasets: '25'
-    #       secrets: '35'
-    #       services: '20'
     - apiVersion: v1
       kind: Service
       metadata:
@@ -233,7 +185,7 @@ spec:
                 - "--disable-cloud-controller"
                 - "--flannel-backend=none"
                 - "--kube-controller-manager-arg=controllers=*,-nodeipam,-nodelifecycle,-persistentvolume-binder,-attachdetach,-persistentvolume-expander,-cloud-node-lifecycle"  
-                - "--service-cidr=10.96.0.0/12"  
+                - "--service-cidr=100.64.0.0/13"  
               volumeMounts:
                 - mountPath: /data
                   name: data

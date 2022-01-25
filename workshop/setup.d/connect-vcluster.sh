@@ -5,8 +5,8 @@ set -x
 set -eo pipefail
 
 # Download vcluster binary.
-sleep 10
-curl -L --silent --show-error --fail -o /opt/kubernetes/bin/vcluster https://github.com/loft-sh/vcluster/releases/download/v0.3.0-beta.2/vcluster-linux-amd64
+while
+curl -L --silent --show-error --fail -o /opt/kubernetes/bin/vcluster https://github.com/loft-sh/vcluster/releases/download/v0.3.0-beta.2/vcluster-linux-amd64 --retry 10 --retry-connrefused --retry-max-time 120 --retry-delay 5
 
 chmod +x /opt/kubernetes/bin/vcluster
 

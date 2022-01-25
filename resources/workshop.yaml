@@ -101,19 +101,19 @@ spec:
     # service ports when it should, so need to define our own security policy.
     #    https://github.com/eduk8s/eduk8s-operator/issues/109
     # The security policy was set to "custom" to allow taking control.
-    # - kind: RoleBinding
-    #   apiVersion: rbac.authorization.k8s.io/v1
-    #   metadata:
-    #     name: vcluster-anyuid
-    #     namespace: $(session_namespace)-vc
-    #   roleRef:
-    #     apiGroup: rbac.authorization.k8s.io
-    #     kind: ClusterRole
-    #     name: $(workshop_namespace)-anyuid
-    #   subjects:
-    #     - kind: ServiceAccount
-    #       namespace: $(session_namespace)-vc
-    #       name: vcluster
+    - kind: RoleBinding
+      apiVersion: rbac.authorization.k8s.io/v1
+      metadata:
+        name: vcluster-anyuid
+        namespace: $(session_namespace)-vc
+      roleRef:
+        apiGroup: rbac.authorization.k8s.io
+        kind: ClusterRole
+        name: $(workshop_namespace)-anyuid
+      subjects:
+        - kind: ServiceAccount
+          namespace: $(session_namespace)-vc
+          name: vcluster
     - apiVersion: rbac.authorization.k8s.io/v1
       kind: RoleBinding
       metadata:
@@ -135,40 +135,40 @@ spec:
     # Since budget was set to "custom" to remove limit ranges, means that
     # there is currently now cap on how much resources someone can use in
     # the virtual cluster.
-    # - kind: ResourceQuota
-    #   apiVersion: v1
-    #   metadata:
-    #     name: compute-resources
-    #     namespace: $(session_namespace)-vc
-    #   spec:
-    #     hard:
-    #       limits.cpu: '4'
-    #       limits.memory: 4Gi
-    #     scopes:
-    #     - NotTerminating
-    # - kind: ResourceQuota
-    #   apiVersion: v1
-    #   metadata:
-    #     name: compute-resources-timebound
-    #     namespace: $(session_namespace)-vc
-    #   spec:
-    #     hard:
-    #       limits.cpu: '4'
-    #       limits.memory: 4Gi
-    #     scopes:
-    #     - Terminating
-    # - kind: ResourceQuota
-    #   apiVersion: v1
-    #   metadata:
-    #     name: object-counts
-    #     namespace: $(session_namespace)-vc
-    #   spec:
-    #     hard:
-    #       persistentvolumeclaims: '12'
-    #       replicationcontrollers: '25'
-    #       replicasets: '25'
-    #       secrets: '35'
-    #       services: '20'
+    - kind: ResourceQuota
+      apiVersion: v1
+      metadata:
+        name: compute-resources
+        namespace: $(session_namespace)-vc
+      spec:
+        hard:
+          limits.cpu: '4'
+          limits.memory: 4Gi
+        scopes:
+        - NotTerminating
+    - kind: ResourceQuota
+      apiVersion: v1
+      metadata:
+        name: compute-resources-timebound
+        namespace: $(session_namespace)-vc
+      spec:
+        hard:
+          limits.cpu: '4'
+          limits.memory: 4Gi
+        scopes:
+        - Terminating
+    - kind: ResourceQuota
+      apiVersion: v1
+      metadata:
+        name: object-counts
+        namespace: $(session_namespace)-vc
+      spec:
+        hard:
+          persistentvolumeclaims: '12'
+          replicationcontrollers: '25'
+          replicasets: '25'
+          secrets: '35'
+          services: '20'
     - apiVersion: v1
       kind: Service
       metadata:
